@@ -12,4 +12,5 @@ PokeFormula aims to be the number 1 destintation for Pokemon stats and informati
 
 ## API's Used
 [PokeApi](https://pokeapi.co/)
+
 [Pokemon TCG Api](https://pokemontcg.io/)
