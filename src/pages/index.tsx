@@ -13,15 +13,16 @@ export default function Home(){
         const response = await axios.get(loadMore);
         const data = response.data;
 
-        setLoadMore(data.next);
-
         async function createPokemonObject(results) {
+          const newPokemons = [];
+        
           for (const pokemon of results) {
             const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
             const pokemonData = res.data;
-            setPokemons((currentList) => [...currentList, pokemonData]);
+            newPokemons.push(pokemonData);
           }
-
+        
+          setPokemons((currentList) => [...currentList, ...newPokemons]);
         }
         createPokemonObject(data.results);
     };
