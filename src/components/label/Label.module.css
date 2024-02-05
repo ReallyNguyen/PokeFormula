@@ -1,0 +1,43 @@
+.outerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25em;
+    height: 8em;
+    border-style: solid;
+    border-width: 2pt;
+    border-color: black;
+    border-radius: 10pt;
+    position: relative;
+}
+
+.innerContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 4rem;
+}
+
+.title {
+    font-size: 60px;
+}
+
+.rectangle {
+    position: absolute;
+    width: 98%;
+    height: 95%;
+    border-radius: 8pt;
+    border-style: solid;
+    border-width: 4pt;
+    border-color: black;
+    border-radius: 10pt;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 35px 0 35px 60px;
+    border-color: transparent transparent transparent #000;
+}
