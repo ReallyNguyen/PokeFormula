@@ -1,0 +1,29 @@
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+  }
+
+.headerInnerContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.menuItems {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+    .menuItems {
+        display: none;
+    }
+    
+    .mobileMenuIcon {
+
+    }
+}
