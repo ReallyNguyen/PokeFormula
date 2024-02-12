@@ -19,8 +19,8 @@ export default function Header() {
     return (
         <div className={styles.headerContainer}>
             <div className={styles.headerInnerContainer}>
-                <div className={styles.logo}>
-                    <img src='../../images/logo.png' alt="Logo" />
+                <div className={styles.logoRow}>
+                    <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
                     <h1>PokéFormula</h1>
                 </div>
                 {isMobile ? (
