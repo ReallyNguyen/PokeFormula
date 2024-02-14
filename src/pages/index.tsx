@@ -1,5 +1,6 @@
 import Label from "@/components/label";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 export default function Home(){
 
@@ -8,6 +9,7 @@ export default function Home(){
       <Header />
       <h1>PokemonFormula</h1>
       <Label title="Testing"/>
+      <Footer />
     </div>
   );
 
