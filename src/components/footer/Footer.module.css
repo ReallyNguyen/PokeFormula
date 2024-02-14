@@ -15,7 +15,16 @@
     min-width: 100vw;
 }
 .logoRow {
-    width: 100%;
+    width: 70%;
+    color: white;
+}
+.logoLine {
+    display: flex;
+    flex-direction: row;
+}
+.logo {
+    height: 100px;
+    width: 100px;
     color: white;
 
 }
@@ -28,6 +37,14 @@
 .menuItems {
     display: flex;
     justify-content: flex-end;
+    color: white;
+    margin-right: 2vw;
+  }
+.marks {
+    display: flex;
+    flex-direction: column;
+}
+.menudirection {
     flex-direction: row;
     color: white;
     margin-right: 3vw;

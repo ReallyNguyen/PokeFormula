@@ -1,3 +1,6 @@
+
+import Footer from '@/components/footer'
+
 import Label from "@/components/label";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -5,6 +8,10 @@ import Footer from "@/components/footer";
 export default function Home(){
 
   return (
+    <>
+    <Footer />
+    </>
+  )
     <div className="body">
       <Header />
       <h1>PokemonFormula</h1>
