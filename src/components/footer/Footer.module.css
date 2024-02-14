@@ -24,7 +24,14 @@
 }
 .logo {
     height: 100px;
-    width: 100px
+    width: 100px;
+    color: white;
+
+}
+    
+.logo {
+    height: 73px;
+    width: 64px
 }
 
 .menuItems {
@@ -38,5 +45,13 @@
     flex-direction: column;
 }
 .menudirection {
+    flex-direction: row;
+    color: white;
+    margin-right: 3vw;
+    padding-left: 3vw;
+  }
+
+.menudirection {
+    display: flex;
     flex-direction: column;
 }

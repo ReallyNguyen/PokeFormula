@@ -15,6 +15,11 @@ export default function Footer() {
 
                     </div>
                         <div className={styles.menuItems}>
+                    <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
+                    <h1>PokéFormula</h1>
+                    <p>ALl rights Reserved 2024</p>
+                </div>
+                    <div className={styles.menuItems}>
                         <div className={styles.menudirection}>
                         <p>Home</p>
                         <p>Battle</p>
@@ -22,6 +27,7 @@ export default function Footer() {
                         </div>
                 </div>
 
+                    </div>
             </div>
         </div>
 

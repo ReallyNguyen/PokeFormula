@@ -1,0 +1,42 @@
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+}
+
+.headerInnerContainer{
+  min-width: 100vw;
+}
+
+.headerInnerContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.logoRow {
+  width: 75%;
+}
+
+.logo {
+  height: 73px;
+  width: 64px
+}
+
+.menuItems {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+    .menuItems {
+        display: none;
+    }
+    
+    .mobileMenuIcon {
+
+    }
+}
