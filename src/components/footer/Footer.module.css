@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
   min-height: 5vh;
   background-color: #DC4517;
 };
@@ -21,6 +21,8 @@
 .logoLine {
     display: flex;
     flex-direction: row;
+    font-size: 25px;
+    text-shadow: 2px 2px 5px black;
 }
 .logo {
     height: 73px;
@@ -49,7 +51,9 @@
 .menudirection {
     display: flex;
     position: absolute;
-    left: 95%;
+    left: 90%;
+    font-size: 28px;
+    text-shadow: 2px 2px 5px black;
     flex-direction: column;
     color: white;
 
