@@ -23,35 +23,34 @@
     flex-direction: row;
 }
 .logo {
-    height: 100px;
-    width: 100px;
+    height: 73px;
+    width: 64px;
     color: white;
+    margin-right: 10px;
 
 }
     
-.logo {
-    height: 73px;
-    width: 64px
+.logoTitle {
+   margin-top: 10px;
 }
 
 .menuItems {
     display: flex;
-    justify-content: flex-end;
     color: white;
-    margin-right: 2vw;
+    justify-content: right;
+    margin-right: 5vw;
   }
 .marks {
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
 }
-.menudirection {
-    flex-direction: row;
-    color: white;
-    margin-right: 3vw;
-    padding-left: 3vw;
-  }
 
 .menudirection {
     display: flex;
+    position: absolute;
+    left: 95%;
     flex-direction: column;
+    color: white;
+
 }

@@ -9,28 +9,26 @@ export default function Footer() {
             <div className={styles.logoRow}>
                     <div className={styles.logoLine}>
                     <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
-                    <h1>PokéFormula</h1>
-                    </div>
-                    <p>ALl rights Reserved 2024</p>
 
-                    </div>
-                        <div className={styles.menuItems}>
-                    <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
-                    <h1>PokéFormula</h1>
-                    <p>ALl rights Reserved 2024</p>
-                </div>
-                    <div className={styles.menuItems}>
-                        <div className={styles.menudirection}>
+                    <h1 className={styles.logoTitle}>PokéFormula</h1>
+                    <div className={styles.menudirection}>
                         <p>Home</p>
                         <p>Battle</p>
-                        <p>Dex</p>
+                        <p>PokéDex</p>
                         </div>
-                </div>
+                    </div>
+
+                    <div className={styles.marks}>
+                    <p>ALl rights Reserved 2024</p>
+                    </div>
+
+            </div>
+            <div className={styles.menuItems}>
 
                     </div>
+
             </div>
         </div>
-
     );
 
 
