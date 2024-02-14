@@ -15,26 +15,28 @@
     min-width: 100vw;
 }
 .logoRow {
-    width: 100%;
+    width: 70%;
     color: white;
-
 }
-    
+.logoLine {
+    display: flex;
+    flex-direction: row;
+}
 .logo {
-    height: 73px;
-    width: 64px
+    height: 100px;
+    width: 100px
 }
 
 .menuItems {
     display: flex;
     justify-content: flex-end;
-    flex-direction: row;
     color: white;
-    margin-right: 3vw;
-    padding-left: 3vw;
+    margin-right: 2vw;
   }
-
-.menudirection {
+.marks {
     display: flex;
+    flex-direction: column;
+}
+.menudirection {
     flex-direction: column;
 }
