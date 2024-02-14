@@ -1,0 +1,40 @@
+.footerOuterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  min-height: 5vh;
+  background-color: #DC4517;
+};
+.footerContainer {
+    display: flex;
+    flex-direction: row;
+}
+.footerContainer {
+    min-width: 100vw;
+}
+.logoRow {
+    width: 100%;
+    color: white;
+
+}
+    
+.logo {
+    height: 73px;
+    width: 64px
+}
+
+.menuItems {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    color: white;
+    margin-right: 3vw;
+    padding-left: 3vw;
+  }
+
+.menudirection {
+    display: flex;
+    flex-direction: column;
+}
