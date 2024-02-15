@@ -1,57 +1,26 @@
-.footerOuterContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  min-height: 5vh;
-  background-color: #DC4517;
-};
-.footerContainer {
+.container {
+    background-color: #DC4517;
     display: flex;
     flex-direction: row;
-}
-.footerContainer {
-    min-width: 100vw;
-}
-.logoRow {
-    width: 70%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
     color: white;
 }
-.logoLine {
-    display: flex;
-    flex-direction: row;
-}
-.logo {
-    height: 100px;
-    width: 100px;
-    color: white;
 
-}
-    
 .logo {
     height: 73px;
-    width: 64px
+    width: 64px;
+    margin-bottom: 1rem;
 }
 
-.menuItems {
+.logoContainer {
     display: flex;
-    justify-content: flex-end;
-    color: white;
-    margin-right: 2vw;
-  }
-.marks {
-    display: flex;
-    flex-direction: column;
-}
-.menudirection {
     flex-direction: row;
-    color: white;
-    margin-right: 3vw;
-    padding-left: 3vw;
-  }
+    align-items: center;
+}
 
-.menudirection {
+.right {
     display: flex;
     flex-direction: column;
 }
