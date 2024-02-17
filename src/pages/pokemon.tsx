@@ -10,24 +10,28 @@ export default function Api(){
 
   useEffect(() => {
     const getPokemons = async () => {
-        const response = await axios.get(loadMore);
-        const data = response.data;
+      const response = await axios.get(loadMore);
+      const data = response.data;
 
-        async function createPokemonObject(results: string) {
-          const newPokemons = [];
-        
-          for (const pokemon of results) {
-            const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-            const pokemonData = res.data;
-            newPokemons.push(pokemonData);
-          }
-        
-          setPokemons((currentList) => [...currentList, ...newPokemons]);
+      console.log(response.data)
+  
+      async function createPokemonObject(results: IPokemon[]) {
+        const newPokemons: IPokemon[] = [];
+  
+        for (const pokemon of results) {
+          const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
+          const pokemonData = res.data;
+          newPokemons.push(pokemonData);
+          console.log(pokemonData)
         }
-        createPokemonObject(data.results);
+  
+        setPokemons((currentList) => [...currentList, ...newPokemons]);
+      }
+      createPokemonObject(data.results);
+
     };
     getPokemons();
-  }, []); 
+  }, []);
 
   return (
     <div>

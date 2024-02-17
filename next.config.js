@@ -7,6 +7,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn2.pokeapi.co/',
         port: ""
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pokemontcg.io',
+        port: ""
       }
     ]
   }
