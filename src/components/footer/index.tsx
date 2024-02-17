@@ -5,7 +5,7 @@ import styles from './Footer.module.css';
 export default function Footer() {
    
     return (
-        <div className={styles.container}>
+        <footer className={styles.container}>
             <div className={styles.left}>
                 <div className={styles.logoContainer}>
                     <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
@@ -24,9 +24,7 @@ export default function Footer() {
                     <h2>Account</h2>
                 </Link>
             </div>
-            
-        </div>
-
+        </footer>
     );
 
 

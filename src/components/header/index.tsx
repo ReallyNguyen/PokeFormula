@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -17,7 +18,7 @@ export default function Header() {
     }, []);
 
     return (
-        <div className={styles.headerContainer}>
+        <header className={styles.headerContainer}>
             <div className={styles.headerInnerContainer}>
                 <div className={styles.logoRow}>
                     <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
@@ -29,12 +30,12 @@ export default function Header() {
                     </div>
                 ) : (
                     <div className={styles.menuItems}>
-                        <p>Home</p>
-                        <p>Battle</p>
-                        <p>Dex</p>
+                        <Link href='/'>Home</Link>
+                        <Link href='/battle'>Battle</Link>
+                        <Link href='/dex'>Dex</Link>
                     </div>
                 )}
             </div>
-        </div>
+        </header>
     );
 }
