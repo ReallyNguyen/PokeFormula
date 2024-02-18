@@ -16,7 +16,7 @@ export default function Screen({ title }: IScreen) {
                         <div className={styles.circle}></div>
                     </div>
                     <div className={styles.innerContainer}>
-                        {title}
+                        <h1 className={styles.title}>{title}</h1>
                     </div>
                     <div className={styles.bigCircle}></div>
                 </div>
