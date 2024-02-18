@@ -1,3 +1,29 @@
+.bigcontainer {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.top {
+    width: calc(100% - 0px);
+    height: 10px;
+    margin-left: 5px;
+    background-color: black;
+    transform: skewX(-45deg);
+    z-index: -1;
+}
+
+.right {
+    width: calc(1rem - 6px);
+    height: calc(18rem + 4px);
+    background-color: black;
+    transform: skewY(-35deg);
+    z-index: -1;
+    display: flex;
+    align-self: flex-end;
+    margin-bottom: 3px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -25,13 +51,14 @@
 
 .innerContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
     width: 23rem;
     height: 14rem;
     background-color: grey;
     border-bottom-left-radius: 20%;
 }
+
+
 
 .bigCircle {
     align-self: flex-start;

@@ -16,6 +16,7 @@ export default function Home(){
       <Label title="Testing"/>
       <Footer /> */}
       <Screen title='testing'/>
+
     </div>
   )
 
