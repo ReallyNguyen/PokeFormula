@@ -1,7 +1,6 @@
 .bigcontainer {
     display: flex;
     flex-direction: row;
-
 }
 
 .top {
@@ -67,4 +66,24 @@
     background-color: #D9D9D9;
     border-radius: 1.2rem;
     margin: 0rem 0 1.5rem 2rem;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+
+    .container {
+        width: 21rem;
+        height: 14rem;
+    }
+
+    .right {
+        width: calc(1rem - 6px);
+        height: calc(14rem + 4px);
+    }
+
+    .innerContainer {
+        width: 18rem;
+        height: 10rem;
+    }
+
 }
