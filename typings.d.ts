@@ -16,10 +16,6 @@ interface IGeneration {
     name: string;
 }
 
-interface GenerationDropdownProps {
-    onSelectGeneration: (generationUrl: string) => void;
-}
-
 interface ITCG {
 
 }
