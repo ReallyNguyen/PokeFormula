@@ -22,7 +22,7 @@ export default function Header() {
             <div className={styles.headerInnerContainer}>
                 <div className={styles.logoRow}>
                     <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
-                    <h1>PokéFormula</h1>
+                    <h1 className={styles.h1}>PokéFormula</h1>
                 </div>
                 {isMobile ? (
                     <div className={styles.mobileMenuIcon}>

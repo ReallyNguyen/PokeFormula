@@ -1,11 +1,11 @@
 .container {
-    background-color: #DC4517;
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
-    color: white;
+    color: var(--font-color);
 }
 
 .logo {

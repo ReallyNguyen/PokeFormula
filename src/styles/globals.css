@@ -1,3 +1,17 @@
+:root {
+  --primary-color: #DC4517;
+  --secondary-color: #1B82B1;
+
+  --background-color: #faebd7;
+  --font-color: #221F1F;
+}
+
 body {
-  background-color: antiquewhite;
+  background-color: var(--background-color);
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Pokemon Classic';
+  src: url('../../public/fonts/Pokemon-Classic.ttf') format('truetype');
 }

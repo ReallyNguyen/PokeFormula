@@ -9,14 +9,13 @@ export default function Home(){
 
   return (
     <div className="body">
-      {/* <Header />
+      <Header />
       <Tcg />
       <h1>PokemonFormula</h1>
       <Link href='/pokemon'>Pokemon</Link>
       <Label title="Testing"/>
-      <Footer /> */}
       <Screen title='testing'/>
-
+      <Footer />
     </div>
   )
 
