@@ -12,6 +12,10 @@ interface IPokemon {
     name: string;
 }
 
+interface IGeneration {
+    name: string;
+}
+
 interface ITCG {
 
 }
