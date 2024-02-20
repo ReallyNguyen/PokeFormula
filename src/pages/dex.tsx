@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react"
 
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+
 import PokemonSelect from "@/components/pokemonSelect";
 import GenerationPicker from "@/components/generationPicker"
 import PokemonDetails from "@/components/pokemonDisplay";
@@ -15,7 +18,8 @@ export default function Dex() {
     },[selectedGen]);
 
     return(
-        <>
+        <main>
+            <Header />
             <h1>Dex</h1>
             <GenerationPicker setSelectedGen={setSelectedGen} />
             { 
@@ -27,6 +31,7 @@ export default function Dex() {
             {
                 selectedPokemonUrl && <PokemonDetails pokemonUrl={selectedPokemonUrl} />
             }
-        </>
+            <Footer />
+        </main>
     )
 }
