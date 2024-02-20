@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 import styles from './Header.module.css';
 
 export default function Header() {
     const [isMobile, setIsMobile] = useState(false);
+    const router = useRouter();
+
+    const handleNavigation = (path: string) => {
+        router.push(path);
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -30,9 +36,9 @@ export default function Header() {
                     </div>
                 ) : (
                     <div className={styles.menuItems}>
-                        <Link href='/'>Home</Link>
-                        <Link href='/battle'>Battle</Link>
-                        <Link href='/dex'>Dex</Link>
+                        <a onClick={() => handleNavigation('/')}>Home</a>
+                        <a onClick={() => handleNavigation('/battle')}>Battle</a>
+                        <a onClick={() => handleNavigation('/dex')}>Dex</a>
                     </div>
                 )}
             </div>
