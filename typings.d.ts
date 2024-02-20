@@ -14,7 +14,22 @@ interface IPokemon {
 
 interface IGeneration {
     name: string;
+    url: string;
 }
+
+interface IPokemon {
+    name: string;
+    url: string;
+}
+
+interface PokemonListProps {
+    selectedGeneration: string;
+}
+
+interface GenerationPickerProps {
+    setSelectedGen: (url: string) => void;
+}
+  
 
 interface ITCG {
 
