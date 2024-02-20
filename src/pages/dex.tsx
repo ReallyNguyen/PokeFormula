@@ -8,6 +8,7 @@ import GenerationPicker from "@/components/generationPicker"
 import PokemonDetails from "@/components/pokemonDisplay";
 
 
+
 export default function Dex() {
     const [selectedGen, setSelectedGen] = useState<string>('');
     const [selectedPokemonUrl, setSelectedPokemonUrl] = useState<string | null>(null);

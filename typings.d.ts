@@ -66,6 +66,20 @@ interface GenerationPickerProps {
     setSelectedGen: (url: string) => void;
 }
 
+interface IPokemon {
+    name: string;
+    url: string;
+}
+
+interface PokemonListProps {
+    selectedGeneration: string;
+}
+
+interface GenerationPickerProps {
+    setSelectedGen: (url: string) => void;
+}
+  
+
 interface ITCG {
 
 }
