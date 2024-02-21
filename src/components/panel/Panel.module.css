@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.label {
+    display: flex;
+    margin: 100px;    
+}
+.button{
+        color: black;
+        text-decoration: none;
+        background-color: white;
+        font-family: 'pokemon classic';
+        font-weight: 800;
+        font-size: 1.5em;
+        border: none;
+        display: flex;
+        padding: 4px;
+        border-color: #DC4517;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        -webkit-box-shadow: 10px 0px 5px rgba(153, 153, 153, 1), 10px 0px 5px rgba(153, 153, 153, 1);
+        -moz-box-shadow: 10px 0px 5px rgba(153, 153, 153, 1), 10px 0px 5px rgba(153, 153, 153, 1);
+        box-shadow: 10px 0px 5px rgba(153, 153, 153, 1), 10px 0px 5px rgba(153, 153, 153, 1);
+        margin: 100px auto;
+        width: 160px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        -webkit-transition: all .1s ease;
+        -moz-transition: all .1s ease;
+        -ms-transition: all .1s ease;
+        -o-transition: all .1s ease;
+        transition: all .1s ease;
+}
+.button:active {
+    -webkit-box-shadow: 3px 0px 0px rgba(219, 31, 5, 1), 3px 3px 0px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 3px 0px 0px rgba(219, 31, 5, 1), 3px 3px 0px rgba(0, 0, 0, .9);
+    box-shadow: 3px 0px 0px rgba(219, 31, 5, 1), 3px 3px 0px rgba(0, 0, 0, .9);
+    right: 10px;
+    border: none;
+}
+.input{
+    display: flex;
+    flex-direction: row;
+    margin: 8px;
+    width: 200px;
+    height: 30px;
+    border-radius: 7px;
+    border: 3px solid black;
+}
+
+
