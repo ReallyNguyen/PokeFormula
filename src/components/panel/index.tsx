@@ -20,11 +20,13 @@ function Panel() {
 
   return (
     <div className={styles.container}>
-        <Label className={styles.label} title={title}/>
+      <div className={styles.L}>
+        <Label title={title}/>
+      </div>
       <form className={styles.form}>
-        <p>Username</p>
+        <p className={styles.p}>Username</p>
         <input placeholder="type here"className={styles.input}/>
-        <p>Password</p>
+        <p className={styles.p}>Password</p>
         <input placeholder="Set password here"className={styles.input}/>
         <button className={styles.button} onClick={onSubmit}>{button}</button>
       </form>

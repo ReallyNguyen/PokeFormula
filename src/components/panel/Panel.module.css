@@ -5,9 +5,9 @@
     align-items: center;
     justify-content: center;
 }
-.label {
+.L {
     display: flex;
-    margin: 100px;    
+    margin: 20px;
 }
 .button{
         color: black;
@@ -19,14 +19,13 @@
         border: none;
         display: flex;
         padding: 4px;
-        border-color: #DC4517;
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
         border-radius: 8px;
         -webkit-box-shadow: 10px 0px 5px rgba(153, 153, 153, 1), 10px 0px 5px rgba(153, 153, 153, 1);
         -moz-box-shadow: 10px 0px 5px rgba(153, 153, 153, 1), 10px 0px 5px rgba(153, 153, 153, 1);
         box-shadow: 10px 0px 5px rgba(153, 153, 153, 1), 10px 0px 5px rgba(153, 153, 153, 1);
-        margin: 100px auto;
+        margin: 50px auto;
         width: 160px;
         text-align: center;
         align-items: center;
@@ -38,9 +37,9 @@
         transition: all .1s ease;
 }
 .button:active {
-    -webkit-box-shadow: 3px 0px 0px rgba(219, 31, 5, 1), 3px 3px 0px rgba(0, 0, 0, .9);
-    -moz-box-shadow: 3px 0px 0px rgba(219, 31, 5, 1), 3px 3px 0px rgba(0, 0, 0, .9);
-    box-shadow: 3px 0px 0px rgba(219, 31, 5, 1), 3px 3px 0px rgba(0, 0, 0, .9);
+    -webkit-box-shadow: 3px 0px 0px rgba(153, 153, 153, 1), 3px 3px 0px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 3px 0px 0px rgba(153, 153, 153, 1), 3px 3px 0px rgba(0, 0, 0, .9);
+    box-shadow: 3px 0px 0px rgba(153, 153, 153, 1), 3px 3px 0px rgba(0, 0, 0, .9);
     right: 10px;
     border: none;
 }
@@ -48,10 +47,18 @@
     display: flex;
     flex-direction: row;
     margin: 8px;
-    width: 200px;
-    height: 30px;
+    width: 390px;
+    height: 50px;
     border-radius: 7px;
     border: 3px solid black;
+}
+.p{
+    display: flex;
+    align-items: left;
+    align-content: left;
+    font-family: 'pokemon classic';
+    font-weight: 500;
+    font-size: 15px;
 }
 
 
