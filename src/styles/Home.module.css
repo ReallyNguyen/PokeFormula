@@ -5,16 +5,27 @@
   justify-content: center;
 }
 
+.header {
+  font-family: 'Pokemon Classic', sans-serif;
+}
+
 .content {
   margin: 3rem 0;
   width: 40%
 }
 
-
 .screenContainer {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 3rem;
   margin: 3rem 0;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  .content {
+    width: 70%
+  }
 }

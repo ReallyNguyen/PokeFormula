@@ -21,7 +21,7 @@ export default function Home(){
               <p>Access the Pokédex or battle page to find information about any generation of Pokemon. </p>
               <p>Unlock Pokémon TCG cards as rewards for winning battles and watch your collection grow. With a big enough collection, you’ll be ready to pokeduke it out when we add our TCG functionality. (Planned for future release 2026)</p>
             </div>
-            <div className={styles.screen}>
+            <div className={styles.screenContainer}>
               <Screen title="Battle" />
               <Screen title="Pokedex" />
             </div>

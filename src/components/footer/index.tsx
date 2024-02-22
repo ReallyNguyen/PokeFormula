@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -10,18 +11,18 @@ export default function Footer() {
                     <div className={styles.left}>
                         <div className={styles.logoContainer}>
                             <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
-                            <h4 className={styles.h4}>PokeFormula</h4>
+                            <h4>PokeFormula</h4>
                         </div>
                         <p className={styles.copyright}>All rights reserved. Original Materials Copyright 2024. All other copyrights held by Nintendo 2024. ©</p>
                     </div>
                     <div className={styles.right}>
-                        <Link href={""}>
+                        <Link href={"/battle"}>
                             <p>Battle</p>
                         </Link>
-                        <Link href={""}>
+                        <Link href={"/dex"}>
                             <p>PokeDex</p>
                         </Link>
-                        <Link href={""}>
+                        <Link href={"/profile"}>
                             <p>Account</p>
                         </Link>
                     </div>
@@ -29,8 +30,6 @@ export default function Footer() {
             </div>
         </footer>
     );
-
-
 
 
 }

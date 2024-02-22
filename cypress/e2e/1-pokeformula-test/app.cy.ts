@@ -14,8 +14,6 @@ context('Home page', () => {
     });
 
 
-
-
     it('should container h1', () => {
         cy.get('h1').contains('PokeFormula')
     })
