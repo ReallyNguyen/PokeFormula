@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 35rem;
+    height: 30rem;
+    border-radius: 7px;
+    border: 5px solid #6C6A7A;
+    background: #FFF;
+    box-shadow: 3px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.title {
+    margin: 1.5rem 0;
+    height: 5.5em;
+    background: #ABD5E2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 4.5em;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    margin: 1rem 1rem;
+}
+
+.card {
+    height: 5rem;
+    width: 5rem;
+    background: #ABD5E2;
+}

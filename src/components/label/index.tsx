@@ -1,10 +1,10 @@
 import styles from './Label.module.css'
 
-interface labelType {
+interface ILabel {
     [key: string]: any;
 }
 
-export default function Label({title}: labelType){
+export default function Label({title}: ILabel){
     return (
         <>
             <div className={styles.outerContainer}>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .footerOuterContainer {
   display: flex;
   flex-direction: row;
@@ -46,15 +47,72 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+=======
+.footer {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
 }
 
-.menudirection {
+/* .footerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+} */
+  
+.footerTop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--font-color);
+>>>>>>> 48ca806f865327b028ab80bd05720d85e80ee47f
+}
+
+.logo {
+    height: 43px;
+    width: 34px;
+    margin-bottom: 1rem;
+}
+
+.copyright {
+    font-weight: 100;
+    font-size: 10px !important;
+}
+
+.logoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.right {
     display: flex;
     position: absolute;
     left: 90%;
     font-size: 28px;
     text-shadow: 2px 2px 5px black;
     flex-direction: column;
+<<<<<<< HEAD
     color: white;
 
+=======
+    gap: 20px;
+    padding-right: 150px;
+}
+
+.right a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.right p {
+    font-size: 12px;
+    font-weight: 100;
+    margin: 0;
+    text-decoration: none;
+>>>>>>> 48ca806f865327b028ab80bd05720d85e80ee47f
 }
