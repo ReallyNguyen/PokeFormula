@@ -1,31 +1,36 @@
-import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
    
     return (
-        <footer className={styles.container}>
-            <div className={styles.left}>
-                <div className={styles.logoContainer}>
-                    <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
-                    <h1>PokeFormula</h1>
+        <footer className={styles.footer}>
+            <div className={styles.footerContainer}>
+                <div className={styles.footerTop}>
+                    <div className={styles.left}>
+                        <div className={styles.logoContainer}>
+                            <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
+                            <h4 className={styles.h4}>PokeFormula</h4>
+                        </div>
+                        <p className={styles.copyright}>All rights reserved. Original Materials Copyright 2024. All other copyrights held by Nintendo 2024. ©</p>
+                    </div>
+                    <div className={styles.right}>
+                        <Link href={""}>
+                            <p>Battle</p>
+                        </Link>
+                        <Link href={""}>
+                            <p>PokeDex</p>
+                        </Link>
+                        <Link href={""}>
+                            <p>Account</p>
+                        </Link>
+                    </div>
                 </div>
-                <h2>All rights reserved? 2024</h2>
-            </div>
-            <div className={styles.right}>
-                <Link href={""}>
-                    <h2>Battle</h2>
-                </Link>
-                <Link href={""}>
-                    <h2>PokeDex</h2>
-                </Link>
-                <Link href={""}>
-                    <h2>Account</h2>
-                </Link>
             </div>
         </footer>
     );
+
+
 
 
 }
