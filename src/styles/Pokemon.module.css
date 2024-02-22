@@ -1,0 +1,13 @@
+.statsContainer {
+    display: flex;
+    flex-direction: column;
+}
+  
+.statsRow {
+    display: flex;
+}
+
+.stat {
+    margin-right: 20px;
+}
+  
