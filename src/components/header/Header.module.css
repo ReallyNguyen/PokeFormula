@@ -10,9 +10,6 @@
   font-family: 'Pokemon Classic', sans-serif;
 }
 
-
-
-
 .headerInnerContainer {
   display: flex;
   flex-direction: row;
@@ -22,7 +19,6 @@
   max-width: 1300px;
 }
 
-
 .logoRow {
   display: flex;
   flex-direction: row;
@@ -31,19 +27,16 @@
   text-decoration: none;
 }
 
-
 .logo {
   height: 73px;
   width: 64px
 }
 
-
 .menuItems {
   display: flex;
   justify-content: space-around;
-  gap: 20px;
+  gap: 5px;
 }
-
 
 .menuItems a {
   text-decoration: none;
@@ -54,13 +47,11 @@
   cursor: pointer;
 }
 
-
 .menuItems a:hover {
   border: 2px solid var(--background-color);
   background: var(--background-color);
   color: var(--font-color);
 }
-
 
 .h1 {
   font-family: 'Pokemon Classic', sans-serif;
@@ -70,9 +61,6 @@
   color: var(--font-color);
 }
 
-
-
-
 /* Mobile */
 @media only screen and (max-width: 768px) {
   .menuItems {
@@ -80,5 +68,7 @@
   }
 
 
-  .mobileMenuIcon {}
+  .mobileMenuIcon {
+    
+  }
 }

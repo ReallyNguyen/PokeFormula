@@ -9,23 +9,18 @@ export default function Header() {
     const [isMobile, setIsMobile] = useState(false);
     const router = useRouter();
 
-
     const handleNavigation = (path: string) => {
         router.push(path);
     };
-
 
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
         };
 
-
         window.addEventListener('resize', handleResize);
 
-
         handleResize();
-
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -44,8 +39,9 @@ export default function Header() {
                     </div>
                 ) : (
                     <div className={styles.menuItems}>
+                        <a href='/battle'>Home</a>
                         <a href='/battle'>Battle</a>
-                        <a href='/dex'>PokeDex</a>
+                        <a href='/dex'>PokéDex</a>
                         <a href='/profile'>Account</a>
                     </div>
                 )}
