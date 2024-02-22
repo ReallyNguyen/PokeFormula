@@ -17,11 +17,10 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  min-width: 100vw;
 }
 
 @font-face {
   font-family: 'Pokemon Classic';
   src: url('../../public/fonts/Pokemon-Classic.ttf') format('truetype');
+
 }
