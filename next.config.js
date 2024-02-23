@@ -12,6 +12,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.pokemontcg.io',
         port: ""
+      },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        port: ""
       }
     ]
   }

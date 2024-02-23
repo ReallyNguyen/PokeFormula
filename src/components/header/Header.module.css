@@ -42,20 +42,20 @@
   text-decoration: none;
   color: var(--font-color);
   padding: 10px 25px 10px 25px;
-  border: 2px solid var(--primary-color);
+  border: 3px solid var(--primary-color);
   border-radius: 25px;
   cursor: pointer;
 }
 
 .menuItems a:hover {
-  border: 2px solid var(--background-color);
-  background: var(--background-color);
+  border: 3px solid var(--background-color);
+  background: var(--hover-background);
   color: var(--font-color);
 }
 
 .h1 {
   font-family: 'Pokemon Classic', sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   margin: 0px 0px 0px 25px;
   text-decoration: none;
   color: var(--font-color);

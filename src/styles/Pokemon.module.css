@@ -1,13 +1,68 @@
 .statsContainer {
     display: flex;
     flex-direction: column;
+    width: 450px;
+    background-color:var(--stat-card-background);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px gray;
+    margin-top: 50px;
+}
+
+.nameRow {
+    display: flex;
+    align-items: center;
+    font-family: 'Pokemon Classic', sans-serif;
+    margin-bottom: 20px;
+}
+
+.nameType {
+    margin-left: 30px;
+    width: 45%;
+}
+
+.nameType h1 {
+    font-size: 24px;  
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.pokeImage {
+    background: var(--poke-image);
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px 5px rgba(100, 150, 197, 0.3);
+}
+
+.detailsContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
 }
   
 .statsRow {
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    gap: 5px;
+    width: 50%;
 }
 
 .stat {
-    margin-right: 20px;
+    flex: 1 1;
+    margin-right: 5px;
+    background-color: var(--stat-box);
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding: 5px 25px;
+    color: var(--font-color);
+    font-family: 'Pokemon Classic', sans-serif;
+    font-size: 12px;
+    box-shadow: inset 0 0 10px 5px rgba(100, 150, 197, 0.3);
 }
-  
+
+.stat p {
+    margin:0;
+}
