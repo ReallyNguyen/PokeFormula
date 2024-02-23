@@ -39,7 +39,7 @@ export default function Header() {
                     </div>
                 ) : (
                     <div className={styles.menuItems}>
-                        <a href='/battle'>Home</a>
+                        <a href='/'>Home</a>
                         <a href='/battle'>Battle</a>
                         <a href='/dex'>PokéDex</a>
                         <a href='/profile'>Account</a>

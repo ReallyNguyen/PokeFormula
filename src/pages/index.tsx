@@ -1,5 +1,7 @@
 import styles from '../styles/Home.module.css'
 
+import TCG from '../components/tcg'
+
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Screen from "@/components/screen";
@@ -21,6 +23,7 @@ export default function Home(){
             <div className={styles.screenContainer}>
               <Screen title="Battle" />
               <Screen title="PokéDex" />
+              <TCG />
             </div>
         </main>
       <Footer />

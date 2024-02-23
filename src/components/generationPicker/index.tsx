@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import styles from './GenerationPicker.module.css'
+
 export default function GenerationPicker({ setSelectedGen }: GenerationPickerProps) {
     const [generations, setGenerations] = useState<IGeneration[]>([]);
   
@@ -20,7 +22,7 @@ export default function GenerationPicker({ setSelectedGen }: GenerationPickerPro
 	}, []);
   
 	return (
-		<div>
+		<div className={styles.generationPicker}>
 			<select onChange={(e) => setSelectedGen(e.target.value)}>
 				<option value="">Select Generation...</option>
 				{

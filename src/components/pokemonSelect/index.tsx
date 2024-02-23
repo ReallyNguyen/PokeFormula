@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import styles from './PokemonSelect.module.css'
+
 export default function PokemonSelect({ selectedGeneration, onSelectPokemon }: PokemonSelectProps ) {
     const [pokemonList, setPokemonList] = useState<IPokemon[]>([]);
     const [ selectedPokemonUrl, setselectedPokemonUrl ] = useState<string>('');
@@ -41,7 +43,7 @@ export default function PokemonSelect({ selectedGeneration, onSelectPokemon }: P
     };
 
     return (
-        <div>
+        <div className={styles.pokemonSelect}>
             <select onChange={(e) => handleSelectChange(e.target.value)}>
                 <option value="">Select Pokémon...</option>
                     {
