@@ -31,13 +31,9 @@ interface IPokemonDetails {
         },
     }[];
     sprites: { 
-        other: { 
-            dream_world: { 
-                front_default: string; 
-            } 
-        } ,
+        front_default: string;
     };
-  }
+}
 
 interface IGeneration {
     name: string;

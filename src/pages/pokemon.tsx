@@ -13,6 +13,7 @@ export default function Pokemon({ selectedPokemon }: { selectedPokemon: string }
         const response = await axios.get(selectedPokemon);
         const pokemonData = response.data;
         setPokemonDetails(pokemonData);
+        console.log(pokemonData)
       } catch (error) {
         console.error('Error fetching Pokémon details:', error);
       }
@@ -29,26 +30,46 @@ export default function Pokemon({ selectedPokemon }: { selectedPokemon: string }
 
   return (
     <div className={styles.statsContainer}>
-      <h1>{pokemonDetails.name}</h1>
-      <div className={styles.statsRow}>
-        {pokemonDetails.stats.slice(0, 3).map((stat, index) => (
-          <div className={styles.stat} key={index}>
-            <p>{stat.base_stat}</p>
-            <p>{stat.stat.name}</p>
-          </div>
-        ))}
+      <div className={styles.nameRow}>
+        <Image src={pokemonDetails.sprites.front_default} width={150} height={150} alt={pokemonDetails.name} className={styles.pokeImage}/>
+        <div className={styles.nameType}>
+          <h1>{pokemonDetails.name.charAt(0).toUpperCase() + pokemonDetails.name.slice(1)}</h1>
+          <p>{pokemonDetails.types[0].type.name.charAt(0).toUpperCase() + pokemonDetails.types[0].type.name.slice(1)}</p>
+        </div>
       </div>
-      <div className={styles.statsRow}>
-        {pokemonDetails.stats.slice(3).map((stat, index) => (
-          <div className={styles.stat} key={index}>
-            <p>{stat.base_stat}</p>
-            <p>{stat.stat.name}</p>
-          </div>
-        ))}
+      <div className={styles.detailsContainer}>
+        <div className={styles.statsRow}>
+          {pokemonDetails.stats.slice(0, 3).map((stat, index) => (
+            <div className={styles.stat} key={index}>
+              <p>
+                {
+                  stat.stat.name === 'attack' ? 'Attack' :
+                  stat.stat.name === 'defense' ? 'Defense' :
+                  stat.stat.name === 'hp' ? 'Health' :
+                  stat.stat.name.toUpperCase()
+                }
+              </p>
+              <p>{stat.base_stat}</p>
+            </div>
+          ))}
+        </div>
+        <div className={styles.statsRow}>
+          {pokemonDetails.stats.slice(3).map((stat, index) => (
+            <div className={styles.stat} key={index}>
+              <p>
+                {
+                  stat.stat.name === 'special-attack' ? 'Special ATK' :
+                  stat.stat.name === 'special-defense' ? 'Special DEF' :
+                  stat.stat.name === 'speed' ? 'Speed' :
+                  stat.stat.name.toUpperCase()
+                }
+              </p>
+              <p>{stat.base_stat}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <p>{pokemonDetails.types[0].type.name}</p>
       <p>{pokemonDetails.moves[0].move.name}</p>
-      <Image src={pokemonDetails.sprites.other.dream_world.front_default} width={20} height={20} alt={pokemonDetails.name} />
     </div>
   );
 }
