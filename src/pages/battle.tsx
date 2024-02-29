@@ -6,6 +6,13 @@ import GenerationPicker from "@/components/generationPicker";
 import Pokemon from "./pokemon";
 import styles from '../styles/Battle.module.css';
 
+// enum of battle outcome
+enum BattleOutcome {
+    WIN,
+    LOSE,
+    NULL
+}
+
 export default function Battle() {
     const [selectedGen, setSelectedGen] = useState<string>('');
     const [leftSelectedPokemonUrl, setLeftSelectedPokemonUrl] = useState<string | null>(null);
@@ -15,6 +22,7 @@ export default function Battle() {
     const [leftPokemon, setLeftPokemon] = useState<IPokemonDetails | null>(null);
     const [rightPokemon, setRightPokemon] = useState<IPokemonDetails | null>(null);
     const [gameOver, setGameOver] = useState(false);
+    const [battleOutcome, setBattleOutcome] = useState(BattleOutcome.NULL); // set to null to begin. it does nothing
 
     const handleStartBattle = () => {
         console.log("Starting battle...");
@@ -61,10 +69,12 @@ export default function Battle() {
             setBattleLog(prevLog => [...prevLog, `${leftPokemon.name} fainted! ${rightPokemon.name} wins the battle!`]);
             setGameOver(true);
             setIsBattleStarted(false);
+            setBattleOutcome(BattleOutcome.WIN) // if left side win, you win and it change from NULL to WIN
         } else if (rightPokemon.stats[0].base_stat <= 0) {
             setBattleLog(prevLog => [...prevLog, `${rightPokemon.name} fainted! ${leftPokemon.name} wins the battle!`]);
             setGameOver(true);
             setIsBattleStarted(false);
+            setBattleOutcome(BattleOutcome.LOSE) // if right side win, you lose and it change from NULL to LOSE
         }
     };
 
@@ -111,6 +121,8 @@ export default function Battle() {
             <Header />
             <div className={styles.pageContent}>
                 <h1 className={styles.pageTitle}>Battle</h1>
+                {battleOutcome === BattleOutcome.WIN && <p>WIN</p>} {/* should return something if you win */}
+                {battleOutcome === BattleOutcome.LOSE && <p>LOSE</p>} {/* should return something if you lose */}
                 <div className={styles.battleSelect}>
                     <div className={styles.leftCol}>
                         <GenerationPicker setSelectedGen={setSelectedGen} />
