@@ -23,7 +23,6 @@ export default function Home(){
             <div className={styles.screenContainer}>
               <Screen title="Battle" />
               <Screen title="PokéDex" />
-              <TCG />
             </div>
         </main>
       <Footer />
