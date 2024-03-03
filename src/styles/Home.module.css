@@ -9,6 +9,11 @@
   font-family: 'Pokemon Classic', sans-serif;
 }
 
+.title {
+  text-align: center;
+  font-family: 'Pokemon Classic', sans-serif;
+}
+
 .content {
   margin: 3rem 0;
   width: 40%

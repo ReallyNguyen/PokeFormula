@@ -14,23 +14,23 @@ interface IPokemon {
 
 interface IPokemonDetails {
     name: string;
-    stats: { 
-        base_stat: number; 
-        stat: { 
-            name: string; 
+    stats: {
+        base_stat: number;
+        stat: {
+            name: string;
         },
     }[];
-    types: { 
-        type: { 
-            name: string; 
-        }, 
-    }[];
-    moves: { 
-        move: { 
-            name: string; 
+    types: {
+        type: {
+            name: string;
         },
     }[];
-    sprites: { 
+    moves: {
+        move: {
+            name: string;
+        },
+    }[];
+    sprites: {
         front_default: string;
     };
 }
@@ -74,7 +74,15 @@ interface PokemonListProps {
 interface GenerationPickerProps {
     setSelectedGen: (url: string) => void;
 }
-  
+
+interface BattleProps {
+    outcome: string;
+    func1: React.MouseEventHandler<HTMLButtonElement>;
+    func2: React.MouseEventHandler<HTMLButtonElement>;
+    exit: React.MouseEventHandler<HTMLButtonElement>;
+    button1: string;
+    button2: string;
+}
 
 interface ITCG {
 

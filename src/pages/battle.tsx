@@ -4,7 +4,11 @@ import Footer from "@/components/footer";
 import PokemonSelect from "@/components/pokemonSelect";
 import GenerationPicker from "@/components/generationPicker";
 import Pokemon from "./pokemon";
+import Poke from "./pokemon";
 import styles from '../styles/Battle.module.css';
+import Modal from "react-modal"
+import Outcome from "@/components/outcome/outcome";
+import { useRouter } from 'next/navigation'
 
 // enum of battle outcome
 enum BattleOutcome {
@@ -23,6 +27,8 @@ export default function Battle() {
     const [rightPokemon, setRightPokemon] = useState<IPokemonDetails | null>(null);
     const [gameOver, setGameOver] = useState(false);
     const [battleOutcome, setBattleOutcome] = useState(BattleOutcome.NULL); // set to null to begin. it does nothing
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const router = useRouter()
 
     const handleStartBattle = () => {
         console.log("Starting battle...");
@@ -70,11 +76,13 @@ export default function Battle() {
             setGameOver(true);
             setIsBattleStarted(false);
             setBattleOutcome(BattleOutcome.WIN) // if left side win, you win and it change from NULL to WIN
+            setModalIsOpen(true);
         } else if (rightPokemon.stats[0].base_stat <= 0) {
             setBattleLog(prevLog => [...prevLog, `${rightPokemon.name} fainted! ${leftPokemon.name} wins the battle!`]);
             setGameOver(true);
             setIsBattleStarted(false);
             setBattleOutcome(BattleOutcome.LOSE) // if right side win, you lose and it change from NULL to LOSE
+            setModalIsOpen(true);
         }
     };
 
@@ -87,7 +95,17 @@ export default function Battle() {
         setLeftPokemon(null);
         setRightPokemon(null);
         setGameOver(false);
+        setModalIsOpen(false)
     };
+
+    const home = () => {
+        router.push('/')
+        setModalIsOpen(false)
+      }
+
+    const exit = () => {
+        setModalIsOpen(false)
+    }
 
     useEffect(() => {
         console.log("isBattleStarted changed:", isBattleStarted);
@@ -121,8 +139,52 @@ export default function Battle() {
             <Header />
             <div className={styles.pageContent}>
                 <h1 className={styles.pageTitle}>Battle</h1>
-                {battleOutcome === BattleOutcome.WIN && <p>WIN</p>} {/* should return something if you win */}
-                {battleOutcome === BattleOutcome.LOSE && <p>LOSE</p>} {/* should return something if you lose */}
+                {/* should return something if you win */}
+                {battleOutcome === BattleOutcome.WIN && 
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={home}
+                        shouldCloseOnOverlayClick={false}
+                        style={{
+                            overlay: {
+                                backgroundColor: "rgba(0,0,0,0.2)",
+                            },
+                            content: {
+                                width: "850px",
+                                height: "85vh",
+                                margin: "auto",
+                                padding: "0px",
+                                border: "none",
+                                overflow: "hidden",
+                            },
+                        }}
+                    >
+                        <Outcome outcome="win" button1="Restart" func1={handleRestartBattle} button2="Home" func2={home} exit={exit}/>
+                    </Modal>
+                }
+                {/* should return something if you lose */}
+                {battleOutcome === BattleOutcome.LOSE && 
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={home}
+                        shouldCloseOnOverlayClick={false}
+                        style={{
+                            overlay: {
+                                backgroundColor: "rgba(0,0,0,0.2)",
+                            },
+                            content: {
+                                width: "850px",
+                                height: "85vh",
+                                margin: "auto",
+                                padding: "0px",
+                                border: "none",
+                                overflow: "hidden",
+                            },
+                        }}
+                    >
+                        <Outcome outcome="lose" button1="Restart" func1={handleRestartBattle} button2="Home" func2={home} exit={exit}/>
+                    </Modal>
+                }
                 <div className={styles.battleSelect}>
                     <div className={styles.leftCol}>
                         <GenerationPicker setSelectedGen={setSelectedGen} />
@@ -133,7 +195,7 @@ export default function Battle() {
                             />
                         )}
                         {leftSelectedPokemonUrl && (
-                            <Pokemon selectedPokemon={leftSelectedPokemonUrl} />
+                            <Pokemon selectedPokemon={leftSelectedPokemonUrl} inBattleMode={isBattleStarted}/>
                         )}
                     </div>
                     <div className={styles.rightCol}>
@@ -145,7 +207,7 @@ export default function Battle() {
                             />
                         )}
                         {rightSelectedPokemonUrl && (
-                            <Pokemon selectedPokemon={rightSelectedPokemonUrl} />
+                            <Pokemon selectedPokemon={rightSelectedPokemonUrl} inBattleMode={isBattleStarted}/>
                         )}
                     </div>
                 </div>
