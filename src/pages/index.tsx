@@ -5,6 +5,7 @@ import TCG from '../components/tcg'
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Screen from "@/components/screen";
+import Button from '@/components/button';
 
 
 export default function Home(){
@@ -21,9 +22,14 @@ export default function Home(){
               <p>Unlock Pokémon TCG cards as rewards for winning battles and watch your collection grow. With a big enough collection, you’ll be ready to pokéduke it out when we add our TCG functionality. (Planned for future release 2026)</p>
             </div>
             <div className={styles.screenContainer}>
-              <Screen title="Battle" />
-              <Screen title="PokéDex" />
+              <Screen>
+                <h1 className={styles.title}>Battle</h1>
+              </Screen>
+              <Screen>
+                <h1 className={styles.title}>PokéDex</h1>
+              </Screen>
             </div>
+            <Button link='/battle' name='battle' />
         </main>
       <Footer />
     </>

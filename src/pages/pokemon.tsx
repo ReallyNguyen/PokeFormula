@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
-
+import Screen from '@/components/screen';
 import styles from '../styles/Pokemon.module.css'
 
-export default function Pokemon({ selectedPokemon }: { selectedPokemon: string }) {
+export default function Pokemon({ selectedPokemon, inBattleMode }: { selectedPokemon: string; inBattleMode: boolean }) {
   const [pokemonDetails, setPokemonDetails] = useState<IPokemonDetails | null>(null);
 
   useEffect(() => {
@@ -26,6 +26,14 @@ export default function Pokemon({ selectedPokemon }: { selectedPokemon: string }
 
   if (!pokemonDetails) {
     return null; // < !! Corey Note for Corey: Put Loading Indicator Here !! >
+  }
+
+  if (inBattleMode) {
+    return (
+      <Screen>
+        <Image src={pokemonDetails.sprites.front_default} width={150} height={150} alt={pokemonDetails.name} className={styles.pokeImage}/>
+      </Screen>
+    );
   }
 
   return (

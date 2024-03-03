@@ -1,30 +1,29 @@
 import styles from './Screen.module.css'
+import Image from 'next/image';
 
 interface IScreen {
-    [key: string]: any
+    children: any;
 }
 
-export default function Screen({ title }: IScreen) {
+export default function Screen({ children }: IScreen) {
     return (
         <>
-        <div className={styles.bigcontainer}>
-            <div className={styles.testing}>
-                <div className={styles.top}></div>
-                <div className={styles.container}>
-                    <div className={styles.circleContainer}>
-                        <div className={styles.circle}></div>
-                        <div className={styles.circle}></div>
+            <div className={styles.bigcontainer}>
+                <div className={styles.testing}>
+                    <div className={styles.top}></div>
+                    <div className={styles.container}>
+                        <div className={styles.circleContainer}>
+                            <div className={styles.circle}></div>
+                            <div className={styles.circle}></div>
+                        </div>
+                        <div className={styles.innerContainer}>
+                            {children}
+                        </div>
+                        <div className={styles.bigCircle}></div>
                     </div>
-                    <div className={styles.innerContainer}>
-                        <h1 className={styles.title}>{title}</h1>
-                    </div>
-                    <div className={styles.bigCircle}></div>
                 </div>
-                
+                <div className={styles.right}></div>
             </div>
-            <div className={styles.right}></div>
-        </div>
-    
         </>
     )
 }
