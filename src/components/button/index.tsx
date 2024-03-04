@@ -1,13 +1,6 @@
 import styles from './Button.module.css'
 import { useRouter } from 'next/router';
 
-interface IButton {
-    name: string;
-    link: string;
-    func?: React.MouseEventHandler<HTMLButtonElement>;
-    type: string;
-}
-
 export default function Button({ link, name, type, func }: IButton) {
     const router = useRouter()
 

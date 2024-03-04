@@ -1,9 +1,4 @@
 import styles from './Screen.module.css'
-import Image from 'next/image';
-
-interface IScreen {
-    children: any;
-}
 
 export default function Screen({ children }: IScreen) {
     return (
