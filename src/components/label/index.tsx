@@ -1,9 +1,5 @@
 import styles from './Label.module.css'
 
-interface ILabel {
-    [key: string]: any;
-}
-
 export default function Label({title}: ILabel){
     return (
         <>
