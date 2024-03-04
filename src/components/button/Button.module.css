@@ -8,13 +8,16 @@
     font: inherit;
     cursor: pointer;
     transition: background-size 0.3s, transform 0.3s, box-shadow 0.3s;
+    transform: translate(-0.5em, -0.5em);
+    margin-top: 1em;
 }
+
+
 
 .bigcontainer:hover {
-    transform: translate(-0.5em, -0.5em);
+    transform: translate(-0.8em, -0.8em);
     /* box-shadow: 0.6em 0.6em .15em rgba(0, 0, 0, 0.2); */
 }
-
 
 .top {
     width: calc(100% - 0px);
@@ -47,24 +50,4 @@
 .title {
     text-align: center;
     font-family: 'Pokemon Classic', sans-serif;
-}
-
-/* Mobile */
-@media only screen and (max-width: 768px) {
-
-    .container {
-        width: 21rem;
-        height: 14rem;
-    }
-
-    .right {
-        width: calc(1rem - 6px);
-        height: calc(14rem + 4px);
-    }
-
-    .innerContainer {
-        width: 18rem;
-        height: 10rem;
-    }
-
 }

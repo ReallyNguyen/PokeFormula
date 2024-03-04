@@ -29,7 +29,7 @@ export default function Home(){
                 <h1 className={styles.title}>PokéDex</h1>
               </Screen>
             </div>
-            <Button link='/battle' name='battle' />
+            <Button type='nav' link='/battle' name='battle' />
         </main>
       <Footer />
     </>

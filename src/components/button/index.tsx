@@ -4,9 +4,11 @@ import { useRouter } from 'next/router';
 interface IButton {
     name: string;
     link: string;
+    func?: React.MouseEventHandler<HTMLButtonElement>;
+    type: string;
 }
 
-export default function Button({ name, link }: IButton) {
+export default function Button({ link, name, type, func }: IButton) {
     const router = useRouter()
 
     const handleNavigation = () => {
@@ -15,22 +17,31 @@ export default function Button({ name, link }: IButton) {
 
     return (
         <>
-            <button onClick={handleNavigation} className={styles.bigcontainer}>
-                <div className={styles.testing}>
-                    <div className={styles.top}></div>
-                    <div className={styles.container}>
-                        <div className={styles.circleContainer}>
-                            <div className={styles.circle}></div>
-                            <div className={styles.circle}></div>
+            {type === "nav" ? (
+                <button onClick={handleNavigation} className={styles.bigcontainer}>
+                    <div className={styles.testing}>
+                        <div className={styles.top}></div>
+                        <div className={styles.container}>
+                            <div className={styles.innerContainer}>
+                                <h1 className={styles.title}>{name}</h1>
+                            </div>
                         </div>
-                        <div className={styles.innerContainer}>
-                            <h1 className={styles.title}>{name}</h1>
-                        </div>
-                        <div className={styles.bigCircle}></div>
                     </div>
-                </div>
-                <div className={styles.right}></div>
-            </button>
+                    <div className={styles.right}></div>
+                </button>
+            ) : type === "outcome" ? (
+                <button onClick={func} className={styles.bigcontainer}>
+                    <div className={styles.testing}>
+                        <div className={styles.top}></div>
+                        <div className={styles.container}>
+                            <div className={styles.innerContainer}>
+                                <h1 className={styles.title}>{name}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.right}></div>
+                </button>
+            ) : null}
         </>
     )
 }

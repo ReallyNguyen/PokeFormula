@@ -150,12 +150,11 @@ export default function Battle() {
                                 backgroundColor: "rgba(0,0,0,0.2)",
                             },
                             content: {
-                                width: "850px",
+                                width: "800px",
                                 height: "85vh",
                                 margin: "auto",
                                 padding: "0px",
                                 border: "none",
-                                overflow: "hidden",
                             },
                         }}
                     >
@@ -173,12 +172,11 @@ export default function Battle() {
                                 backgroundColor: "rgba(0,0,0,0.2)",
                             },
                             content: {
-                                width: "850px",
+                                width: "800px",
                                 height: "85vh",
                                 margin: "auto",
                                 padding: "0px",
                                 border: "none",
-                                overflow: "hidden",
                             },
                         }}
                     >
