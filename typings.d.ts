@@ -84,6 +84,17 @@ interface BattleProps {
     button2: string;
 }
 
-interface ITCG {
+interface IButton {
+    name: string;
+    link: string;
+    func?: React.MouseEventHandler<HTMLButtonElement>;
+    type: string;
+}
 
+interface ILabel {
+    title: string;
+}
+
+interface IScreen {
+    children: any;
 }
