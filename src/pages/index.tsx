@@ -1,4 +1,5 @@
 import styles from '../styles/Home.module.css'
+import Image from 'next/image';
 
 import TCG from '../components/tcg'
 
@@ -8,6 +9,7 @@ import Screen from "@/components/screen";
 import Button from '@/components/button';
 
 
+
 export default function Home(){
 
   return (
@@ -15,21 +17,46 @@ export default function Home(){
       <Header />
         <main className={styles.main}>
           <h1 className={styles.header}>PokéFormula</h1>
-            <div className={styles.content}>
-              <p>PokéFormula is your ultimate destination for immersive Pokémon battles and trading card collecting. Dive into a world where strategy meets fun as you build your ultimate Pokémon team.</p>
-              <p>Currently supporting 1V1 battles with future plans to implement 3v3 and 6v6 battles, PokéFormula is the ultimate test of your pokétactics.</p>
-              <p>Access the Pokédex or battle page to find information about any generation of Pokemon. </p>
-              <p>Unlock Pokémon TCG cards as rewards for winning battles and watch your collection grow. With a big enough collection, you’ll be ready to pokéduke it out when we add our TCG functionality. (Planned for future release 2026)</p>
+
+            <div className={styles.section}>
+
+              <div className={styles.intro}>
+                <div className={styles.introContent}>
+                  <h1>What is PokéFormula?</h1>
+                  <p>PokéFormula is your ultimate destination for immersive Pokémon battles and trading card collecting. Dive into a world where strategy meets fun as you build your ultimate Pokémon team.</p>
+                </div>
+                <Screen>
+                  <Image src={'/Images/logo.png'} width={100} height={100} alt='Logo' />
+                </Screen>
+              </div>
+
+              <div className={styles.battle}>
+                <div className={styles.battleContent}>
+                  <h1>Battle!</h1>
+                  <p>PokéFormula is your ultimate destination for immersive Pokémon battles and trading card collecting. Dive into a world where strategy meets fun as you build your ultimate Pokémon team.</p>
+                  <div className={styles.button}>
+                    <Button type='nav' link='/battle' name='Battle' />
+                  </div>
+
+                </div>
+                <Screen>
+                  <Image src={'/Images/logo.png'} width={100} height={100} alt='Logo' />
+                </Screen>
+              </div>
+
+              <div className={styles.pokedex}>
+                <div className={styles.pokedexContent}>
+                  <h1>PokeDex</h1>
+                  <p>Access the Pokédex or battle page to find information about any generation of Pokemon.</p>
+                  <div className={styles.button}>
+                    <Button type='nav' link='/dex' name='Pokedex' />                
+                  </div>
+                </div>
+                <Screen>
+                  <Image src={'/Images/logo.png'} width={100} height={100} alt='Logo' />
+                </Screen>
+              </div>
             </div>
-            <div className={styles.screenContainer}>
-              <Screen>
-                <h1 className={styles.title}>Battle</h1>
-              </Screen>
-              <Screen>
-                <h1 className={styles.title}>PokéDex</h1>
-              </Screen>
-            </div>
-            <Button type='nav' link='/battle' name='battle' />
         </main>
       <Footer />
     </>

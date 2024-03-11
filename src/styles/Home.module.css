@@ -7,6 +7,7 @@
 
 .header {
   font-family: 'Pokemon Classic', sans-serif;
+  margin: 5rem 0;
 }
 
 .title {
@@ -14,9 +15,33 @@
   font-family: 'Pokemon Classic', sans-serif;
 }
 
+.intro,
+.battle,
+.pokedex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-family: 'Pokemon Classic', sans-serif;
+  height: 50vh;
+  align-items: center;
+  margin-bottom: 5em;
+}
+
+.introContent,
+.battleContent,
+.pokedexContent {
+  width: 40%;
+}
+
 .content {
   margin: 3rem 0;
-  width: 40%
+  width: 70%
+}
+
+.button {
+  display: flex;
+  margin-top: 2em;
 }
 
 .screenContainer {
@@ -29,8 +54,39 @@
 }
 
 /* Mobile */
-@media only screen and (max-width: 768px) {
-  .content {
-    width: 70%
+@media only screen and (max-width: 1000px) {
+
+  .intro,
+  .battle,
+  .pokedex {
+    flex-direction: column-reverse;
+    align-items: center;
+    height: auto;
+
   }
+
+  .introContent,
+  .battleContent,
+  .pokedexContent {
+    width: 70%;
+    text-align: center;
+  }
+
+  .introContent h1,
+  .battleContent h1,
+  .pokedexContent h1 {
+    font-size: 20px;
+  }
+
+  .introContent p,
+  .battleContent p,
+  .pokedexContent p {
+    font-size: 15px;
+  }
+
+
+  .button {
+    justify-content: center;
+  }
+
 }
