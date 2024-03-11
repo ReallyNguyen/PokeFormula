@@ -2,6 +2,13 @@
     font-family: 'Pokemon Classic', sans-serif;
     text-align: center;
     position: relative;
+    background-color: white;
+    border-width: 35px 25px 35px 25px;
+    border-style: solid;
+    border-color: #9FA19F;
+    border-radius: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .closeButton {
@@ -10,7 +17,7 @@
     right: 5%;
     background-color: transparent;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
     z-index: 1;
 }
@@ -22,4 +29,16 @@
     align-items: center;
     justify-content: center;
     gap: 3rem;
+}
+
+.line {
+    color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        height: 50%;
+        width: 50%;
+    }
+
 }

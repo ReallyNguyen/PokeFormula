@@ -14,7 +14,7 @@ export default function Header() {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 1000);
         };
 
         window.addEventListener('resize', handleResize);
@@ -28,10 +28,12 @@ export default function Header() {
     return (
         <header className={styles.headerContainer}>
             <div className={styles.headerInnerContainer}>
-                    <a href='/' className={styles.logoRow}>
-                        <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
-                        <h1 className={styles.h1}>PokéFormula</h1>
-                    </a>
+                    <div>
+                        <a href='/' className={styles.logoRow}>
+                            <img src='../../images/logo.png' alt="Logo" className={styles.logo} />
+                            <h1 className={styles.h1}>PokéFormula</h1>          
+                        </a>
+                    </div>
                 {isMobile ? (
                     <div className={styles.mobileMenuIcon}>
                        
