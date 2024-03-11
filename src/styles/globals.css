@@ -2,8 +2,14 @@
   --primary-color: #DC4517;
   --secondary-color: #1B82B1;
 
+
   --background-color: #faebd7;
   --font-color: #221F1F;
+
+  --hover-background: #fff;
+  --stat-box: #99c1d4;
+  --poke-image: #d8e9f0;
+  --stat-card-background: #fcfaff;
 }
 
 body {
@@ -17,11 +23,10 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  min-width: 100vw;
 }
 
 @font-face {
   font-family: 'Pokemon Classic';
   src: url('../../public/fonts/Pokemon-Classic.ttf') format('truetype');
+
 }

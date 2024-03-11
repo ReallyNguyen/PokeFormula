@@ -1,55 +1,83 @@
-import Head from 'next/head'
-import axios from "axios"
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Image from 'next/image';
+import Screen from '@/components/screen';
+import styles from '../styles/Pokemon.module.css'
 
-export default function Api(){
-  const [pokemons, setPokemons] = useState<IPokemon[]>([]);
-  const [loadMore, setLoadMore] = useState<string>('https://pokeapi.co/api/v2/pokemon?limit=20');
+export default function Pokemon({ selectedPokemon, inBattleMode }: { selectedPokemon: string; inBattleMode: boolean }) {
+  const [pokemonDetails, setPokemonDetails] = useState<IPokemonDetails | null>(null);
 
   useEffect(() => {
-    const getPokemons = async () => {
-      const response = await axios.get(loadMore);
-      const data = response.data;
-
-      console.log(response.data)
-  
-      async function createPokemonObject(results: IPokemon[]) {
-        const newPokemons: IPokemon[] = [];
-  
-        for (const pokemon of results) {
-          const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-          const pokemonData = res.data;
-          newPokemons.push(pokemonData);
-          console.log(pokemonData)
-        }
-  
-        setPokemons((currentList) => [...currentList, ...newPokemons]);
+    const fetchPokemonDetails = async () => {
+      try {
+        const response = await axios.get(selectedPokemon);
+        const pokemonData = response.data;
+        setPokemonDetails(pokemonData);
+        console.log(pokemonData)
+      } catch (error) {
+        console.error('Error fetching Pokémon details:', error);
       }
-      createPokemonObject(data.results);
-
     };
-    getPokemons();
-  }, []);
+
+    if (selectedPokemon) {
+      fetchPokemonDetails();
+    }
+  }, [selectedPokemon]);
+
+  if (!pokemonDetails) {
+    return null; // < !! Corey Note for Corey: Put Loading Indicator Here !! >
+  }
+
+  if (inBattleMode) {
+    return (
+      <Screen>
+        <Image src={pokemonDetails.sprites.front_default} width={150} height={150} alt={pokemonDetails.name} className={styles.pokeImage}/>
+      </Screen>
+    );
+  }
 
   return (
-    <div>
-      <h1>PokemonFormula</h1>
-      <p className="pokemon-text">This text uses the Pokemon font.</p>
-      <div>
-        {pokemons.map((pokemonStats, index) => (
-          <div key={index}>
-            <h1>{pokemonStats.name}</h1>
-            <p>{pokemonStats.stats[0].base_stat}</p>
-            <p>{pokemonStats.stats[0].stat.name}</p>
-            <p>{pokemonStats.types[0].type.name}</p>
-            <p>{pokemonStats.moves[0].move.name}</p>
-            <Image src={pokemonStats.sprites.other.dream_world.front_default} width={20} height ={20} alt={pokemonStats.name} />
-          </div>
-        ))}
+    <div className={styles.statsContainer}>
+      <div className={styles.nameRow}>
+        <Image src={pokemonDetails.sprites.front_default} width={150} height={150} alt={pokemonDetails.name} className={styles.pokeImage}/>
+        <div className={styles.nameType}>
+          <h1>{pokemonDetails.name.charAt(0).toUpperCase() + pokemonDetails.name.slice(1)}</h1>
+          <p>{pokemonDetails.types[0].type.name.charAt(0).toUpperCase() + pokemonDetails.types[0].type.name.slice(1)}</p>
+        </div>
       </div>
+      <div className={styles.detailsContainer}>
+        <div className={styles.statsRow}>
+          {pokemonDetails.stats.slice(0, 3).map((stat, index) => (
+            <div className={styles.stat} key={index}>
+              <p>
+                {
+                  stat.stat.name === 'attack' ? 'Attack' :
+                  stat.stat.name === 'defense' ? 'Defense' :
+                  stat.stat.name === 'hp' ? 'Health' :
+                  stat.stat.name.toUpperCase()
+                }
+              </p>
+              <p>{stat.base_stat}</p>
+            </div>
+          ))}
+        </div>
+        <div className={styles.statsRow}>
+          {pokemonDetails.stats.slice(3).map((stat, index) => (
+            <div className={styles.stat} key={index}>
+              <p>
+                {
+                  stat.stat.name === 'special-attack' ? 'Special ATK' :
+                  stat.stat.name === 'special-defense' ? 'Special DEF' :
+                  stat.stat.name === 'speed' ? 'Speed' :
+                  stat.stat.name.toUpperCase()
+                }
+              </p>
+              <p>{stat.base_stat}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p>{pokemonDetails.moves[0].move.name}</p>
     </div>
   );
-
 }

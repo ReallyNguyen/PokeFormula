@@ -28,8 +28,8 @@ export default function Tcg() {
             {
                 tcg && (
                     <div>
-                        <h1>{tcg.name}</h1>
-                        <Image src={tcg.images.small} width={400} height={550} alt={tcg.name} />
+                        <h4>{tcg.name}</h4>
+                        <Image src={tcg.images.small} width={300} height={400} alt={tcg.name} />
                     </div>
                 )
             }

@@ -5,34 +5,28 @@ import Footer from "@/components/footer";
 
 import PokemonSelect from "@/components/pokemonSelect";
 import GenerationPicker from "@/components/generationPicker"
-import PokemonDetails from "@/components/pokemonDisplay";
 
-
+import Pokemon from "./pokemon";
 
 export default function Dex() {
     const [selectedGen, setSelectedGen] = useState<string>('');
     const [selectedPokemonUrl, setSelectedPokemonUrl] = useState<string | null>(null);
 
-    useEffect(() => {
-        console.log('DEX URL: ' + selectedPokemonUrl);
-        setSelectedPokemonUrl(selectedPokemonUrl);
-    },[selectedGen]);
-
-    return(
+    return (
         <main>
             <Header />
             <h1>Dex</h1>
             <GenerationPicker setSelectedGen={setSelectedGen} />
-            { 
-                selectedGen && <PokemonSelect
-                                    selectedGeneration={selectedGen}
-                                    onSelectPokemon={setSelectedPokemonUrl}
-                                />
-            }
-            {
-                selectedPokemonUrl && <PokemonDetails pokemonUrl={selectedPokemonUrl} />
-            }
+            {selectedGen && (
+                <PokemonSelect
+                    selectedGeneration={selectedGen}
+                    onSelectPokemon={setSelectedPokemonUrl}
+                />
+            )}
+            {selectedPokemonUrl && (
+                <Pokemon selectedPokemon={selectedPokemonUrl} />
+            )}
             <Footer />
         </main>
-    )
+    );
 }
