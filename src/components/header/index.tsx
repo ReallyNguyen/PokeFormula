@@ -4,7 +4,7 @@ import styles from './Header.module.css';
 
 export default function Header() {
     const [isMobile, setIsMobile] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false); // Track menu state
+    const [menuOpen, setMenuOpen] = useState(false);
     const router = useRouter();
 
     const handleNavigation = (path: string) => {
@@ -53,7 +53,7 @@ export default function Header() {
             {isMobile && menuOpen && (
                 <div className={styles.mobileMenu}>
                     <div className={styles.closeIcon} onClick={toggleMenu}>
-                        <img src={'../../images/close.svg'} width={20} height={20} alt='close' />
+                        X
                     </div>
                     <div className={styles.mobileMenuItems}>
                         <a href='/' onClick={toggleMenu}>Home</a>

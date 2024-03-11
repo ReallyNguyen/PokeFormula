@@ -100,6 +100,7 @@
     top: 20px;
     right: 20px;
     cursor: pointer;
+    font-size: 20px;
   }
 
   .mobileMenuItems {
@@ -113,10 +114,6 @@
     text-decoration: none;
     color: var(--font-color);
     font-size: 1.5rem;
-    transition: color 0.3s;
   }
 
-  .mobileMenuItems a:hover {
-    color: var(--hover-font-color);
-  }
 }
