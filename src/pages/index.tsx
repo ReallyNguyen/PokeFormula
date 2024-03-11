@@ -1,14 +1,10 @@
 import styles from '../styles/Home.module.css'
 import Image from 'next/image';
 
-import TCG from '../components/tcg'
-
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Screen from "@/components/screen";
 import Button from '@/components/button';
-
-
 
 export default function Home(){
 
@@ -37,7 +33,6 @@ export default function Home(){
                   <div className={styles.button}>
                     <Button type='nav' link='/battle' name='Battle' />
                   </div>
-
                 </div>
                 <Screen>
                   <Image src={'/Images/logo.png'} width={100} height={100} alt='Logo' />
@@ -56,6 +51,7 @@ export default function Home(){
                   <Image src={'/Images/logo.png'} width={100} height={100} alt='Logo' />
                 </Screen>
               </div>
+
             </div>
         </main>
       <Footer />

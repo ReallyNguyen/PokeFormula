@@ -62,7 +62,6 @@
     flex-direction: column-reverse;
     align-items: center;
     height: auto;
-
   }
 
   .introContent,
@@ -83,7 +82,6 @@
   .pokedexContent p {
     font-size: 15px;
   }
-
 
   .button {
     justify-content: center;
