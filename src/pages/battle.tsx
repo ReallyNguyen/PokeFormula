@@ -10,7 +10,6 @@ import Modal from "react-modal"
 import Outcome from "@/components/outcome/outcome";
 import { useRouter } from 'next/navigation'
 
-// enum of battle outcome
 enum BattleOutcome {
     WIN,
     LOSE,
@@ -26,14 +25,20 @@ export default function Battle() {
     const [leftPokemon, setLeftPokemon] = useState<IPokemonDetails | null>(null);
     const [rightPokemon, setRightPokemon] = useState<IPokemonDetails | null>(null);
     const [gameOver, setGameOver] = useState(false);
-    const [battleOutcome, setBattleOutcome] = useState(BattleOutcome.NULL); // set to null to begin. it does nothing
+    const [battleOutcome, setBattleOutcome] = useState(BattleOutcome.NULL); 
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const router = useRouter()
+    const [leftSelectedMoves, setLeftSelectedMoves] = useState<string[]>([]);
+    const [rightSelectedMoves, setRightSelectedMoves] = useState<string[]>([]);
+    const router = useRouter();
 
     const handleStartBattle = () => {
-        console.log("Starting battle...");
-        setIsBattleStarted(true);
-        console.log("isBattleStarted set to true:", isBattleStarted);
+        if (leftSelectedMoves.length === 4 && rightSelectedMoves.length === 4) {
+            console.log("Starting battle...");
+            setIsBattleStarted(true);
+            console.log("isBattleStarted set to true:", isBattleStarted);
+        } else {
+            alert("Both Pokémon must have four moves selected each.");
+        }
     };
 
     const simulateBattleRound = () => {
@@ -134,6 +139,12 @@ export default function Battle() {
         }
     }, [rightSelectedPokemonUrl]);
 
+    console.log('leftPokemon:', leftPokemon);
+    console.log('rightPokemon:', rightPokemon);
+    console.log('leftSelectedMoves:', leftSelectedMoves);
+    console.log('rightSelectedMoves:', rightSelectedMoves);
+
+
     return (
         <main>
             <Header />
@@ -193,7 +204,11 @@ export default function Battle() {
                             />
                         )}
                         {leftSelectedPokemonUrl && (
-                            <Pokemon selectedPokemon={leftSelectedPokemonUrl} inBattleMode={isBattleStarted}/>
+                            <Pokemon
+                                selectedPokemon={leftSelectedPokemonUrl}
+                                inBattleMode={isBattleStarted}
+                                onSelectMoves={setLeftSelectedMoves}
+                            />
                         )}
                     </div>
                     <div className={styles.rightCol}>
@@ -205,12 +220,16 @@ export default function Battle() {
                             />
                         )}
                         {rightSelectedPokemonUrl && (
-                            <Pokemon selectedPokemon={rightSelectedPokemonUrl} inBattleMode={isBattleStarted}/>
+                            <Pokemon
+                                selectedPokemon={rightSelectedPokemonUrl}
+                                inBattleMode={isBattleStarted}
+                                onSelectMoves={setRightSelectedMoves}
+                            />
                         )}
                     </div>
                 </div>
-                {leftPokemon && rightPokemon && (
-                    <button onClick={handleStartBattle}>Battle!</button>
+                {leftPokemon && rightPokemon && leftSelectedMoves.length === 4 && rightSelectedMoves.length === 4 && (
+                        <button onClick={handleStartBattle}>Battle!</button>
                 )}
                 <div>
                     {battleLog.map((log, index) => (
