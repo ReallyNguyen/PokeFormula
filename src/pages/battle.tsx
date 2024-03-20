@@ -10,7 +10,6 @@ import Modal from "react-modal"
 import Outcome from "@/components/outcome/outcome";
 import { useRouter } from 'next/navigation'
 
-// enum of battle outcome
 enum BattleOutcome {
     WIN,
     LOSE,
