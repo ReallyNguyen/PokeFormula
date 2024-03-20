@@ -5,7 +5,9 @@ import Screen from '@/components/screen';
 import styles from '../styles/Pokemon.module.css';
 import Modal from 'react-modal';
 
-export default function Pokemon({ selectedPokemon, inBattleMode }: { selectedPokemon: string; inBattleMode: boolean }) {
+Modal.setAppElement('#__next'); 
+
+export default function Pokemon({ selectedPokemon, inBattleMode, onSelectMoves }: { selectedPokemon: string; inBattleMode: boolean; onSelectMoves: (moves: string[]) => void }) {
   const [pokemonDetails, setPokemonDetails] = useState<IPokemonDetails | null>(null);
   const [selectedMoves, setSelectedMoves] = useState<string[]>([]);
   const [isMoveModalOpen, setIsMoveModalOpen] = useState<boolean>(false);
@@ -28,16 +30,22 @@ export default function Pokemon({ selectedPokemon, inBattleMode }: { selectedPok
   }, [selectedPokemon]);
 
   const handleMoveSelection = (moveName: string) => {
-    if (selectedMoves.includes(moveName)) {
-      setSelectedMoves(selectedMoves.filter((move) => move !== moveName));
+    const isMoveSelected = selectedMoves.includes(moveName);
+
+    if (isMoveSelected) {
+        setSelectedMoves(selectedMoves.filter((move) => move !== moveName));
     } else {
-      if (selectedMoves.length < 4) {
-        setSelectedMoves([...selectedMoves, moveName]);
-      } else {
-        // Optionally, you can display a message indicating that only 4 moves can be selected.
-      }
+        if (selectedMoves.length < 4) {
+            setSelectedMoves([...selectedMoves, moveName]);
+        } else {
+            console.log('Error: You may only select 4 moves.');
+        }
     }
   };
+
+  useEffect(() => {
+    onSelectMoves(selectedMoves);
+  }, [selectedMoves, onSelectMoves]);
 
   const handleModalClose = () => {
     setIsMoveModalOpen(false);
@@ -45,7 +53,6 @@ export default function Pokemon({ selectedPokemon, inBattleMode }: { selectedPok
   };
 
   const handleModalOk = () => {
-    // Additional logic can be added here if needed
     setIsMoveModalOpen(false);
   };
 
