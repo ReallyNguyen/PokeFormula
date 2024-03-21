@@ -98,3 +98,8 @@ interface ILabel {
 interface IScreen {
     children: any;
 }
+
+interface MoveSelectionMenuProps {
+    moves: string[];
+    onSelectMove: (move: string) => void; 
+}
