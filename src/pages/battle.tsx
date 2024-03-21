@@ -29,10 +29,19 @@ export default function Battle() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [leftSelectedMoves, setLeftSelectedMoves] = useState<string[]>([]);
     const [rightSelectedMoves, setRightSelectedMoves] = useState<string[]>([]);
+    const [leftColVis, setLeftColVis] = useState<boolean>(true);
+    const [rightColVis, setRightColVis] = useState<boolean>(false);
     const router = useRouter();
 
     const handleStartBattle = () => {
+
         if (leftSelectedMoves.length === 4 && rightSelectedMoves.length === 4) {
+            console.log('LeftCol Visible: ' + leftColVis);
+            console.log('RightCol Visible: ' + rightColVis);
+            setLeftColVis(true);
+            setRightColVis(true);
+            console.log('AFTER LeftCol Visible: ' + leftColVis);
+            console.log('AFTER RightCol Visible: ' + rightColVis);
             console.log("Starting battle...");
             setIsBattleStarted(true);
             console.log("isBattleStarted set to true:", isBattleStarted);
@@ -139,11 +148,6 @@ export default function Battle() {
         }
     }, [rightSelectedPokemonUrl]);
 
-    console.log('leftPokemon:', leftPokemon);
-    console.log('rightPokemon:', rightPokemon);
-    console.log('leftSelectedMoves:', leftSelectedMoves);
-    console.log('rightSelectedMoves:', rightSelectedMoves);
-
 
     return (
         <main>
@@ -195,38 +199,53 @@ export default function Battle() {
                     </Modal>
                 }
                 <div className={styles.battleSelect}>
-                    <div className={styles.leftCol}>
-                        <GenerationPicker setSelectedGen={setSelectedGen} />
-                        {selectedGen && (
-                            <PokemonSelect
-                                selectedGeneration={selectedGen}
-                                onSelectPokemon={setLeftSelectedPokemonUrl}
-                            />
-                        )}
-                        {leftSelectedPokemonUrl && (
-                            <Pokemon
-                                selectedPokemon={leftSelectedPokemonUrl}
-                                inBattleMode={isBattleStarted}
-                                onSelectMoves={setLeftSelectedMoves}
-                            />
-                        )}
-                    </div>
-                    <div className={styles.rightCol}>
-                        <GenerationPicker setSelectedGen={setSelectedGen} />
-                        {selectedGen && (
-                            <PokemonSelect
-                                selectedGeneration={selectedGen}
-                                onSelectPokemon={setRightSelectedPokemonUrl}
-                            />
-                        )}
-                        {rightSelectedPokemonUrl && (
-                            <Pokemon
-                                selectedPokemon={rightSelectedPokemonUrl}
-                                inBattleMode={isBattleStarted}
-                                onSelectMoves={setRightSelectedMoves}
-                            />
-                        )}
-                    </div>
+                    {leftColVis && (
+                        <div className={styles.leftCol}>
+                            <GenerationPicker setSelectedGen={setSelectedGen} />
+                            {selectedGen && (
+                                <PokemonSelect
+                                    selectedGeneration={selectedGen}
+                                    onSelectPokemon={setLeftSelectedPokemonUrl}
+                                />
+                            )}
+                            {leftSelectedPokemonUrl && (
+                                <Pokemon
+                                    selectedPokemon={leftSelectedPokemonUrl}
+                                    inBattleMode={isBattleStarted}
+                                    onSelectMoves={setLeftSelectedMoves}
+                                />
+                            )}
+                            {leftPokemon && leftSelectedMoves.length === 4 && (
+                                <button onClick={() => {
+                                    setRightSelectedPokemonUrl(null);
+                                    setLeftColVis(false);
+                                    setRightColVis(true);
+                                }}>
+                                    Select Defender
+                                </button>
+                            )}
+                        </div>
+                    )}
+                    {rightColVis && (
+                        <div className={styles.rightCol}>
+                            {selectedGen && leftSelectedMoves.length === 4 && (    
+                                <GenerationPicker setSelectedGen={setSelectedGen} />
+                            )}
+                            {selectedGen && leftSelectedMoves.length === 4 && (    
+                                <PokemonSelect
+                                    selectedGeneration={selectedGen}
+                                    onSelectPokemon={setRightSelectedPokemonUrl}
+                                />
+                            )}
+                            {rightSelectedPokemonUrl && leftSelectedMoves.length === 4 && (
+                                <Pokemon
+                                    selectedPokemon={rightSelectedPokemonUrl}
+                                    inBattleMode={isBattleStarted}
+                                    onSelectMoves={setRightSelectedMoves}
+                                />
+                            )}
+                        </div>
+                    )}
                 </div>
                 {leftPokemon && rightPokemon && leftSelectedMoves.length === 4 && rightSelectedMoves.length === 4 && (
                         <button onClick={handleStartBattle}>Battle!</button>
