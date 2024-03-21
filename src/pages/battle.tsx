@@ -9,6 +9,7 @@ import styles from '../styles/Battle.module.css';
 import Modal from "react-modal"
 import Outcome from "@/components/outcome/outcome";
 import { useRouter } from 'next/navigation'
+import MoveSelectionMenu from "@/components/moveSelectionMenu";
 
 enum BattleOutcome {
     WIN,
@@ -18,6 +19,7 @@ enum BattleOutcome {
 
 export default function Battle() {
     const [selectedGen, setSelectedGen] = useState<string>('');
+    const [userSelectedMove, setUserSelectedMove] = useState('');
     const [leftSelectedPokemonUrl, setLeftSelectedPokemonUrl] = useState<string | null>(null);
     const [rightSelectedPokemonUrl, setRightSelectedPokemonUrl] = useState<string | null>(null);
     const [isBattleStarted, setIsBattleStarted] = useState(false);
@@ -31,19 +33,16 @@ export default function Battle() {
     const [rightSelectedMoves, setRightSelectedMoves] = useState<string[]>([]);
     const [leftColVis, setLeftColVis] = useState<boolean>(true);
     const [rightColVis, setRightColVis] = useState<boolean>(false);
+    const [battleLogVis, setBattleLogVis] = useState<boolean>(false);
     const router = useRouter();
 
     const handleStartBattle = () => {
 
         if (leftSelectedMoves.length === 4 && rightSelectedMoves.length === 4) {
-            console.log('LeftCol Visible: ' + leftColVis);
-            console.log('RightCol Visible: ' + rightColVis);
-            setLeftColVis(true);
-            setRightColVis(true);
-            console.log('AFTER LeftCol Visible: ' + leftColVis);
-            console.log('AFTER RightCol Visible: ' + rightColVis);
+
             console.log("Starting battle...");
             setIsBattleStarted(true);
+
             console.log("isBattleStarted set to true:", isBattleStarted);
         } else {
             alert("Both Pokémon must have four moves selected each.");
@@ -54,51 +53,77 @@ export default function Battle() {
         if (!leftPokemon || !rightPokemon) {
             return;
         }
-    
-        const leftMoveIndex = Math.floor(Math.random() * leftPokemon.moves.length);
-        const leftMove = leftPokemon.moves[leftMoveIndex];
-    
-        const rightMoveIndex = Math.floor(Math.random() * rightPokemon.moves.length);
-        const rightMove = rightPokemon.moves[rightMoveIndex];
+        
+        if (!leftSelectedMoves.length || !rightSelectedMoves.length) {
+            console.error("Moves not selected for both Pokémon.");
+            return;
+        }
+        
+        const userMove = userSelectedMove;
+        const rightMove = rightSelectedMoves[Math.floor(Math.random() * rightSelectedMoves.length)];
     
         const leftAccuracy = Math.floor(Math.random() * 20) + 1;
         const rightAccuracy = Math.floor(Math.random() * 20) + 1;
-
+        
         const accuracyThreshold = 15;
-    
-        const leftMoveHits = leftAccuracy <= accuracyThreshold;
+        
+        const userMoveHits = leftAccuracy <= accuracyThreshold;
         const rightMoveHits = rightAccuracy <= accuracyThreshold;
-    
-        if (leftMoveHits) {
+        
+        setBattleLog(prevLog => [
+            ...prevLog,
+            `${leftPokemon.name} used ${userMove}!`,
+            `${rightPokemon.name} used ${rightMove}!`
+        ]);
+        
+        if (userMoveHits) {
             const damage = Math.floor(Math.random() * 10) + 1;
             rightPokemon.stats[0].base_stat -= damage;
-            setBattleLog(prevLog => [...prevLog, `${leftPokemon.name} used ${leftMove.move.name}! It dealt ${damage} damage to ${rightPokemon.name}!`]);
+            setBattleLog(prevLog => [...prevLog, `${leftPokemon.name} dealt ${damage} damage to ${rightPokemon.name}!`]);
         } else {
             setBattleLog(prevLog => [...prevLog, `${leftPokemon.name}'s attack missed!`]);
         }
-    
+        
         if (rightMoveHits) {
             const damage = Math.floor(Math.random() * 10) + 1;
             leftPokemon.stats[0].base_stat -= damage;
-            setBattleLog(prevLog => [...prevLog, `${rightPokemon.name} used ${rightMove.move.name}! It dealt ${damage} damage to ${leftPokemon.name}!`]);
+            setBattleLog(prevLog => [...prevLog, `${rightPokemon.name} dealt ${damage} damage to ${leftPokemon.name}!`]);
         } else {
             setBattleLog(prevLog => [...prevLog, `${rightPokemon.name}'s attack missed!`]);
         }
-    
+        
         if (leftPokemon.stats[0].base_stat <= 0) {
             setBattleLog(prevLog => [...prevLog, `${leftPokemon.name} fainted! ${rightPokemon.name} wins the battle!`]);
             setGameOver(true);
             setIsBattleStarted(false);
-            setBattleOutcome(BattleOutcome.WIN) // if left side win, you win and it change from NULL to WIN
+            setBattleOutcome(BattleOutcome.WIN);
             setModalIsOpen(true);
         } else if (rightPokemon.stats[0].base_stat <= 0) {
             setBattleLog(prevLog => [...prevLog, `${rightPokemon.name} fainted! ${leftPokemon.name} wins the battle!`]);
             setGameOver(true);
             setIsBattleStarted(false);
-            setBattleOutcome(BattleOutcome.LOSE) // if right side win, you lose and it change from NULL to LOSE
+            setBattleOutcome(BattleOutcome.LOSE);
             setModalIsOpen(true);
         }
     };
+    
+
+    const handleSelectMove = (move: string) => {
+        setUserSelectedMove(move);
+    };
+
+    const renderMoveSelectionMenu = () => {
+        if (isBattleStarted && userSelectedMove === '') {
+            return (
+            <MoveSelectionMenu
+                moves={leftSelectedMoves}
+                onSelectMove={handleSelectMove}
+            />
+            );
+        }
+        return null;
+    };
+    
 
     const handleRestartBattle = () => {
         setSelectedGen('');
@@ -109,7 +134,9 @@ export default function Battle() {
         setLeftPokemon(null);
         setRightPokemon(null);
         setGameOver(false);
-        setModalIsOpen(false)
+        setModalIsOpen(false);
+        setBattleLogVis(false);
+        setRightColVis(false);
     };
 
     const home = () => {
@@ -199,7 +226,7 @@ export default function Battle() {
                     </Modal>
                 }
                 <div className={styles.battleSelect}>
-                    {leftColVis && (
+                    <div className={`${styles.columnContainer} ${leftColVis ? styles.visible : ''}`}>
                         <div className={styles.leftCol}>
                             <GenerationPicker setSelectedGen={setSelectedGen} />
                             {selectedGen && (
@@ -220,42 +247,55 @@ export default function Battle() {
                                     setRightSelectedPokemonUrl(null);
                                     setLeftColVis(false);
                                     setRightColVis(true);
-                                }}>
-                                    Select Defender
+                                    console.log('setting left vis false, right vis true.');
+                                    }}>Select Defender
                                 </button>
                             )}
                         </div>
-                    )}
-                    {rightColVis && (
-                        <div className={styles.rightCol}>
-                            {selectedGen && leftSelectedMoves.length === 4 && (    
+                    </div>
+                    <div className={`${styles.columnContainer} ${rightColVis ? styles.visible : styles.column}`} >
+                        {rightColVis && (
+                            <div className={styles.rightCol}>
                                 <GenerationPicker setSelectedGen={setSelectedGen} />
-                            )}
-                            {selectedGen && leftSelectedMoves.length === 4 && (    
                                 <PokemonSelect
                                     selectedGeneration={selectedGen}
                                     onSelectPokemon={setRightSelectedPokemonUrl}
                                 />
-                            )}
-                            {rightSelectedPokemonUrl && leftSelectedMoves.length === 4 && (
-                                <Pokemon
-                                    selectedPokemon={rightSelectedPokemonUrl}
-                                    inBattleMode={isBattleStarted}
-                                    onSelectMoves={setRightSelectedMoves}
-                                />
-                            )}
-                        </div>
-                    )}
+                                {rightSelectedPokemonUrl &&(
+                                    <Pokemon
+                                        selectedPokemon={rightSelectedPokemonUrl}
+                                        inBattleMode={isBattleStarted}
+                                        onSelectMoves={setRightSelectedMoves}
+                                    />
+                                )}
+                            </div>
+                        )}
+
+                    </div>
                 </div>
                 {leftPokemon && rightPokemon && leftSelectedMoves.length === 4 && rightSelectedMoves.length === 4 && (
-                        <button onClick={handleStartBattle}>Battle!</button>
+                        <button onClick={()=> {
+                            handleStartBattle();
+                            setLeftColVis(true);
+                            setRightColVis(true);
+                            setBattleLogVis(true); 
+                        }}>Battle!</button>
                 )}
-                <div>
-                    {battleLog.map((log, index) => (
-                        <p key={index}>{log}</p>
-                    ))}
-                </div>
-                {gameOver && <button onClick={handleRestartBattle}>Restart</button>}
+                {battleLogVis && (
+                    <div className={styles.battleLog}>
+                        {battleLog.map((log, index) => (
+                            <p key={index}>{log}</p>
+                        ))}
+                    </div>
+                )}
+                {renderMoveSelectionMenu()}
+                {gameOver && 
+                    <button onClick={() => {
+                        handleRestartBattle();
+                        setBattleLogVis(false);
+                    }}>
+                        Restart
+                    </button>}
             </div>
             <Footer />
         </main>

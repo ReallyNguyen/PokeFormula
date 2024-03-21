@@ -104,7 +104,7 @@ export default function Pokemon({ selectedPokemon, inBattleMode, onSelectMoves }
         </div>
       </div>
       <div className={styles.movesContainer}>
-        <h2>Selected Moves</h2>
+        <h2>Moves</h2>
         <ul>
           {selectedMoves.map((move, index) => (
             <li key={index}>{move}</li>
