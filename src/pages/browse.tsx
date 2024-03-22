@@ -7,7 +7,7 @@ import styles from '../styles/Browse.module.css'
 import Image from "next/image";
 import axios from "axios";
 import PokeInput from "@/components/input";
-import CardPicker from "@/components/cardSelection";
+
 
 
 
@@ -47,19 +47,19 @@ export default function Tcg() {
                         <div className={styles.Cardrow}>
                         
                         <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/47.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/48.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/57.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/67.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/77.png' width={200} height={300} />
                         </div>
                         <div className={styles.Cardrow}>
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
-                        <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/87.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/97.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/107.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/117.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/127.png' width={200} height={300} />
+                        <img className={styles.Image} src='https://images.pokemontcg.io/sv4pt5/137.png' width={200} height={300} />
                         </div>
                         </div>
                         <Footer/>

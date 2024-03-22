@@ -45,7 +45,7 @@ export default function Header() {
                         <a href='/'>Home</a>
                         <a href='/battle'>Battle</a>
                         <a href='/dex'>PokéDex</a>
-                        <a href='/profile'>Account</a>
+                        <a href='/browse'>TCG</a>
                     </div>
                 )}
             </div>
