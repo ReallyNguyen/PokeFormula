@@ -1,14 +1,6 @@
 .container {
     font-family: 'Pokemon Classic', sans-serif;
     text-align: center;
-    position: relative;
-    background-color: white;
-    border-width: 35px 25px 35px 25px;
-    border-style: solid;
-    border-color: #9FA19F;
-    border-radius: 10px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 .closeButton {
@@ -25,7 +17,7 @@
 .buttonContainer {
     margin-top: 4rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     gap: 3rem;
@@ -36,9 +28,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .container {
-        height: 50%;
-        width: 50%;
+
+    .h1 {
+        font-size: 20px;
     }
 
+    .h3 {
+        font-size: 12px;
+    }
 }
