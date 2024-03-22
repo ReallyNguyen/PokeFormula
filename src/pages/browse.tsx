@@ -40,10 +40,6 @@ export default function Tcg() {
                         <Header/>
                         <div className={styles.PokemonCard}>
                         <h4>TCG Collection</h4>
-                        <PokeInput/>
-                        <button onClick={() => {
-                                    setInputValue("xy1-5")
-                                    }}>Search</button>
                         <div className={styles.Cardrow}>
                         
                         <Image className={styles.Image} src={tcg.images.small} width={200} height={300} alt={tcg.name} />

@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: 'Pokemon Classic', sans-serif;
 }
 .Cardrow {
     display: flex;
