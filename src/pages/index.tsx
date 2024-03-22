@@ -1,5 +1,7 @@
 import styles from '../styles/Home.module.css'
 import Image from 'next/image';
+import Modal from "react-modal"
+import { useState } from 'react';
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -25,6 +27,7 @@ export default function Home(){
                   <Image src={'/Images/logo.png'} width={100} height={100} alt='Logo' />
                 </Screen>
               </div>
+
 
               <div className={styles.battle}>
                 <div className={styles.battleContent}>

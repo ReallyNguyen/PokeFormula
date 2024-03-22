@@ -192,8 +192,9 @@ export default function Battle() {
                                 backgroundColor: "rgba(0,0,0,0.2)",
                             },
                             content: {
-                                width: "800px",
-                                height: "85vh",
+                                width: "60%",
+                                maxWidth: "30rem", 
+                                height: "85vh", 
                                 margin: "auto",
                                 padding: "0px",
                                 border: "none",
@@ -214,8 +215,9 @@ export default function Battle() {
                                 backgroundColor: "rgba(0,0,0,0.2)",
                             },
                             content: {
-                                width: "800px",
-                                height: "85vh",
+                                width: "60%",
+                                maxWidth: "30rem", 
+                                height: "85vh", 
                                 margin: "auto",
                                 padding: "0px",
                                 border: "none",

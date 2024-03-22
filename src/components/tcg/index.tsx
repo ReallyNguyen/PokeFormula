@@ -29,7 +29,7 @@ export default function Tcg() {
                 tcg && (
                     <div>
                         <h4>{tcg.name}</h4>
-                        <Image src={tcg.images.small} width={300} height={400} alt={tcg.name} />
+                        <Image src={tcg.images.small} width={250} height={300} alt={tcg.name} />
                     </div>
                 )
             }
