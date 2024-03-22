@@ -13,4 +13,8 @@
 }
 .Image {
     margin: 10px;
+    transition: .2s;
+}
+.Image:hover {
+    transform: scale(1.2);
 }
