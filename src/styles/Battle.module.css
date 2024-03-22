@@ -35,3 +35,11 @@
     box-shadow: 1px 1px 2px;
     max-height: 100px;
 }
+
+.healthRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1000px;
+}

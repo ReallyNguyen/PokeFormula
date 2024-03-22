@@ -34,6 +34,8 @@ export default function Battle() {
     const [leftColVis, setLeftColVis] = useState<boolean>(true);
     const [rightColVis, setRightColVis] = useState<boolean>(false);
     const [battleLogVis, setBattleLogVis] = useState<boolean>(false);
+    const [leftPokemonInitialHealth, setLeftPokemonInitialHealth] = useState<number | null>(null);
+    const [rightPokemonInitialHealth, setRightPokemonInitialHealth] = useState<number | null>(null);
     const router = useRouter();
 
     const handleStartBattle = () => {
@@ -49,62 +51,62 @@ export default function Battle() {
         }
     };
 
-    const simulateBattleRound = () => {
+    const simulateBattleRound = (userMove: string) => {
         if (!leftPokemon || !rightPokemon) {
             return;
         }
-        
-        if (!leftSelectedMoves.length || !rightSelectedMoves.length) {
-            console.error("Moves not selected for both Pokémon.");
-            return;
-        }
-        
-        const userMove = userSelectedMove;
+    
         const rightMove = rightSelectedMoves[Math.floor(Math.random() * rightSelectedMoves.length)];
     
-        const leftAccuracy = Math.floor(Math.random() * 20) + 1;
-        const rightAccuracy = Math.floor(Math.random() * 20) + 1;
-        
-        const accuracyThreshold = 15;
-        
-        const userMoveHits = leftAccuracy <= accuracyThreshold;
-        const rightMoveHits = rightAccuracy <= accuracyThreshold;
-        
+        const userMoveDamage = getMoveDamage();
+        const userMoveHits = Math.random() <= getMoveAccuracy();
+    
+        const rightMoveDamage = getMoveDamage();
+        const rightMoveHits = Math.random() <= getMoveAccuracy();
+    
+        let userMoveLog = `${leftPokemon.name} used ${userMove}! `;
+        if (userMoveHits) {
+            userMoveLog += `It did ${userMoveDamage} damage!`;
+            rightPokemon.stats[0].base_stat -= userMoveDamage;
+        } else {
+            userMoveLog += `The attack missed!`;
+        }
+    
+        let rightMoveLog = `${rightPokemon.name} used ${rightMove}! `;
+        if (rightMoveHits) {
+            rightMoveLog += `It did ${rightMoveDamage} damage!`;
+            leftPokemon.stats[0].base_stat -= rightMoveDamage;
+        } else {
+            rightMoveLog += `The attack missed!`;
+        }
+    
         setBattleLog(prevLog => [
             ...prevLog,
-            `${leftPokemon.name} used ${userMove}!`,
-            `${rightPokemon.name} used ${rightMove}!`
+            userMoveLog,
+            rightMoveLog
         ]);
-        
-        if (userMoveHits) {
-            const damage = Math.floor(Math.random() * 10) + 1;
-            rightPokemon.stats[0].base_stat -= damage;
-            setBattleLog(prevLog => [...prevLog, `${leftPokemon.name} dealt ${damage} damage to ${rightPokemon.name}!`]);
-        } else {
-            setBattleLog(prevLog => [...prevLog, `${leftPokemon.name}'s attack missed!`]);
-        }
-        
-        if (rightMoveHits) {
-            const damage = Math.floor(Math.random() * 10) + 1;
-            leftPokemon.stats[0].base_stat -= damage;
-            setBattleLog(prevLog => [...prevLog, `${rightPokemon.name} dealt ${damage} damage to ${leftPokemon.name}!`]);
-        } else {
-            setBattleLog(prevLog => [...prevLog, `${rightPokemon.name}'s attack missed!`]);
-        }
-        
+    
         if (leftPokemon.stats[0].base_stat <= 0) {
-            setBattleLog(prevLog => [...prevLog, `${leftPokemon.name} fainted! ${rightPokemon.name} wins the battle!`]);
-            setGameOver(true);
-            setIsBattleStarted(false);
-            setBattleOutcome(BattleOutcome.WIN);
-            setModalIsOpen(true);
+            endGame(rightPokemon.name);
         } else if (rightPokemon.stats[0].base_stat <= 0) {
-            setBattleLog(prevLog => [...prevLog, `${rightPokemon.name} fainted! ${leftPokemon.name} wins the battle!`]);
-            setGameOver(true);
-            setIsBattleStarted(false);
-            setBattleOutcome(BattleOutcome.LOSE);
-            setModalIsOpen(true);
+            endGame(leftPokemon.name);
         }
+    };
+
+    const getMoveDamage = () => {
+        return Math.floor(Math.random() * 15) + 1;
+    };
+
+    const getMoveAccuracy = () => {
+        return 0.5;
+    };
+
+    const endGame = (winner: string) => {
+        setBattleLog(prevLog => [...prevLog, `${winner} wins the battle!`]);
+        setGameOver(true);
+        setIsBattleStarted(false);
+        setBattleOutcome(leftPokemon?.name === winner ? BattleOutcome.WIN : BattleOutcome.LOSE);
+        setModalIsOpen(true);
     };
     
 
@@ -113,12 +115,12 @@ export default function Battle() {
     };
 
     const renderMoveSelectionMenu = () => {
-        if (isBattleStarted && userSelectedMove === '') {
+        if (isBattleStarted && leftPokemon && rightPokemon && leftSelectedMoves.length === 4) {
             return (
-            <MoveSelectionMenu
-                moves={leftSelectedMoves}
-                onSelectMove={handleSelectMove}
-            />
+                <MoveSelectionMenu
+                    moves={leftSelectedMoves}
+                    onSelectMove={handleSelectMove}
+                />
             );
         }
         return null;
@@ -149,15 +151,10 @@ export default function Battle() {
     }
 
     useEffect(() => {
-        console.log("isBattleStarted changed:", isBattleStarted);
-        if (isBattleStarted) {
-            const battleInterval = setInterval(() => {
-                simulateBattleRound();
-            }, 2000);
-    
-            return () => clearInterval(battleInterval);
+        if (isBattleStarted && userSelectedMove !== '') {
+            simulateBattleRound(userSelectedMove);
         }
-    }, [isBattleStarted]);
+    }, [userSelectedMove, isBattleStarted]);
 
     useEffect(() => {
         if (leftSelectedPokemonUrl) {
@@ -175,6 +172,14 @@ export default function Battle() {
         }
     }, [rightSelectedPokemonUrl]);
 
+    useEffect(() => {
+        if (leftPokemon) {
+            setLeftPokemonInitialHealth(leftPokemon.stats[0]?.base_stat || 0);
+        }
+        if (rightPokemon) {
+            setRightPokemonInitialHealth(rightPokemon.stats[0]?.base_stat || 0);
+        }
+    }, [leftPokemon, rightPokemon]);
 
     return (
         <main>
@@ -282,6 +287,18 @@ export default function Battle() {
                             setRightColVis(true);
                             setBattleLogVis(true); 
                         }}>Battle!</button>
+                )}
+                {battleLogVis && (
+                    <div className={styles.healthRow}>
+                        <div>
+                            <h3>{leftPokemon?.name}</h3>
+                            <p>HP: {leftPokemon?.stats[0].base_stat}/{leftPokemonInitialHealth}</p>
+                        </div>
+                        <div>
+                            <h3>{rightPokemon?.name}</h3>
+                            <p>HP: {rightPokemon?.stats[0].base_stat}/{rightPokemonInitialHealth}</p>
+                        </div>
+                    </div>
                 )}
                 {battleLogVis && (
                     <div className={styles.battleLog}>
