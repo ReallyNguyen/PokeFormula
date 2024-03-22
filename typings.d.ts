@@ -98,3 +98,23 @@ interface ILabel {
 interface IScreen {
     children: any;
 }
+
+interface ICard {
+    subtypes?: string;
+    types?: string
+}
+interface CardPickerProps {
+    setSelectedTcg: (data: string) => void;
+}
+
+interface ICardImage {
+    small: string;
+    large: string;
+  }
+  
+interface ITypes {
+    data: string;
+}
+interface Rarity {
+    data: string;
+}
