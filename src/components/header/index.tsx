@@ -45,6 +45,7 @@ export default function Header() {
                         <a href='/'>Home</a>
                         <a href='/battle'>Battle</a>
                         <a href='/dex'>PokéDex</a>
+                        <a href='/card'>Card</a>
                         <a href='/profile'>Account</a>
                     </div>
                 )}
@@ -59,6 +60,7 @@ export default function Header() {
                         <a href='/' onClick={toggleMenu}>Home</a>
                         <a href='/battle' onClick={toggleMenu}>Battle</a>
                         <a href='/dex' onClick={toggleMenu}>PokéDex</a>
+                        <a href='/card' onClick={toggleMenu}>Card</a>
                         <a href='/profile' onClick={toggleMenu}>Account</a>
                     </div>
                 </div>

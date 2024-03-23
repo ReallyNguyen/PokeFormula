@@ -1,0 +1,24 @@
+.PokemonCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pokemon Classic', sans-serif;
+}
+
+.Cardrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.Image {
+    margin: 10px;
+    transition: .2s;
+}
+
+.Image:hover {
+    transform: scale(1.2);
+}
