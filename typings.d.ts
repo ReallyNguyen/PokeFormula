@@ -100,8 +100,14 @@ interface IScreen {
 }
 
 interface ICard {
+    id: string;
+    name: string;
     subtypes?: string;
     types?: string
+    images: {
+        small: string;
+        large: string;
+    }
 }
 interface CardPickerProps {
     setSelectedTcg: (data: string) => void;
@@ -110,7 +116,7 @@ interface CardPickerProps {
 interface ICardImage {
     small: string;
     large: string;
-  }
+}
   
 interface ITypes {
     data: string;
