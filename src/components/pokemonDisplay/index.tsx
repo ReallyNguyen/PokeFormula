@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export default function PokemonDetails({ pokemonUrl }: PokemonDetailsProps) {
     const [pokemonDetails, setPokemonDetails] = useState<IPokemonDetails | null>(null);
+    const [flavorText, setFlavorText] = useState<string>("");
 
     console.log('Trying to Generate Pokemon Details');
   
@@ -12,6 +13,14 @@ export default function PokemonDetails({ pokemonUrl }: PokemonDetailsProps) {
           const response = await axios.get(pokemonUrl);
           console.log('RESPONSE DATA: ' + JSON.stringify(response));
           setPokemonDetails(response.data);
+
+          const speciesResponse = await axios.get(response.data.species.url);
+          const textEntries = speciesResponse.data.flavor_text_entries;
+          const flavorTextEntry = textEntries.find((entry: any) => entry.language.name === "en" && entry.version.name === "ruby");
+
+          if (flavorTextEntry) {
+            setFlavorText(flavorTextEntry.flavor_text);
+          }
         } catch (error) {
           console.error('Error fetching Pokémon details:', error);
         }
@@ -33,7 +42,8 @@ export default function PokemonDetails({ pokemonUrl }: PokemonDetailsProps) {
         <p>{pokemonDetails.stats[0].stat.name}</p>
         <p>{pokemonDetails.types[0].type.name}</p>
         <p>{pokemonDetails.moves[0].move.name}</p>
-        <img src={pokemonDetails.sprites.other.dream_world.front_default} alt={pokemonDetails.name} />
+        <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
+        <p>{flavorText}</p>
       </div>
     );
 }

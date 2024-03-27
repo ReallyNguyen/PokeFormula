@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 import PokemonSelect from "@/components/pokemonSelect";
-import GenerationPicker from "@/components/generationPicker"
-
-import Pokemon from "./pokemon";
+import GenerationPicker from "@/components/generationPicker";
+import PokemonDetails from "@/components/pokemonDisplay";
 
 export default function Dex() {
     const [selectedGen, setSelectedGen] = useState<string>('');
@@ -24,7 +23,7 @@ export default function Dex() {
                 />
             )}
             {selectedPokemonUrl && (
-                <Pokemon selectedPokemon={selectedPokemonUrl} />
+                <PokemonDetails pokemonUrl={selectedPokemonUrl} />
             )}
             <Footer />
         </main>

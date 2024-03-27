@@ -1,15 +1,5 @@
-interface IPokemon {
-    stats: PokemonData[];
-    types: PokemonData[];
-    moves: PokemonData[];
-    sprites: {
-        other: {
-            dream_world: {
-                front_default: string
-            }
-        }
-    };
-    name: string;
+interface PokemonDetailsProps {
+    pokemonUrl: string;
 }
 
 interface IPokemonDetails {
@@ -18,35 +8,40 @@ interface IPokemonDetails {
         base_stat: number;
         stat: {
             name: string;
-        },
+        };
     }[];
     types: {
         type: {
             name: string;
-        },
+        };
     }[];
     moves: {
         move: {
             name: string;
-        },
+        };
     }[];
     sprites: {
         front_default: string;
     };
 }
 
+interface IPokemon {
+    stats: PokemonData[];
+    types: PokemonData[];
+    moves: PokemonData[];
+    sprites: {
+        other: {
+            dream_world: {
+                front_default: string;
+            };
+        };
+    };
+    name: string;
+}
+
 interface IGeneration {
     name: string;
     url: string;
-}
-
-interface IPokemon {
-    name: string;
-    url: string;
-}
-
-interface PokemonDetailsProps {
-    pokemonUrl: string;
 }
 
 interface PokemonListProps {
@@ -56,19 +51,6 @@ interface PokemonListProps {
 interface PokemonSelectProps {
     selectedGeneration: string;
     onSelectPokemon: (pokemonUrl: string) => void;
-}
-
-interface GenerationPickerProps {
-    setSelectedGen: (url: string) => void;
-}
-
-interface IPokemon {
-    name: string;
-    url: string;
-}
-
-interface PokemonListProps {
-    selectedGeneration: string;
 }
 
 interface GenerationPickerProps {
