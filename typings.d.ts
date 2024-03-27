@@ -31,7 +31,11 @@ interface IPokemonDetails {
         },
     }[];
     sprites: {
-        front_default: string;
+        other: {
+            dream_world: {
+                front_default: string
+            }
+        }
     };
 }
 
@@ -101,5 +105,5 @@ interface IScreen {
 
 interface MoveSelectionMenuProps {
     moves: string[];
-    onSelectMove: (move: string) => void; 
+    onSelectMove: (move: string) => void;
 }
