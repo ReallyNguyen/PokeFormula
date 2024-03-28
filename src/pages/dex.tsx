@@ -7,6 +7,8 @@ import PokemonSelect from "@/components/pokemonSelect";
 import GenerationPicker from "@/components/generationPicker";
 import PokemonDetails from "@/components/pokemonDisplay";
 
+import styles from '../styles/Dex.module.css'
+
 export default function Dex() {
     const [selectedGen, setSelectedGen] = useState<string>('');
     const [selectedPokemonUrl, setSelectedPokemonUrl] = useState<string | null>(null);
@@ -14,17 +16,21 @@ export default function Dex() {
     return (
         <main>
             <Header />
-            <h1>Dex</h1>
-            <GenerationPicker setSelectedGen={setSelectedGen} />
-            {selectedGen && (
-                <PokemonSelect
-                    selectedGeneration={selectedGen}
-                    onSelectPokemon={setSelectedPokemonUrl}
-                />
-            )}
-            {selectedPokemonUrl && (
-                <PokemonDetails pokemonUrl={selectedPokemonUrl} />
-            )}
+            <div className={styles.dexBody}>
+                <div className={styles.innerDex}>
+                    <h1>Dex</h1>
+                    <GenerationPicker setSelectedGen={setSelectedGen} />
+                    {selectedGen && (
+                        <PokemonSelect
+                            selectedGeneration={selectedGen}
+                            onSelectPokemon={setSelectedPokemonUrl}
+                        />
+                    )}
+                    {selectedPokemonUrl && (
+                        <PokemonDetails pokemonUrl={selectedPokemonUrl} />
+                    )}
+                </div>
+            </div>
             <Footer />
         </main>
     );

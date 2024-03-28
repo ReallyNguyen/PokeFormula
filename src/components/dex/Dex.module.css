@@ -1,0 +1,14 @@
+.dexBody {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+.innerDex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
